@@ -1,0 +1,65 @@
+/* ==========================================================
+   About page only — typographic layout.
+   Loaded after style.css. Palette unchanged: black, yellow, white.
+   ========================================================== */
+
+/* ---------- opening statement ---------- */
+.ab-open{position:relative;overflow:hidden;border-bottom:5px solid var(--yellow)}
+.ab-open-in{position:relative;padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(40px,5vw,64px)}
+.ab-open-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);align-items:end;margin-top:clamp(28px,4vw,44px)}
+.ab-year{
+  font-family:var(--display);font-weight:700;line-height:.78;letter-spacing:-.06em;
+  font-size:clamp(6rem,17vw,15rem);color:transparent;-webkit-text-stroke:2px var(--yellow);
+}
+.ab-year span{color:var(--yellow);-webkit-text-stroke:0}
+.ab-open h1{font-size:clamp(2rem,4.4vw,3.6rem);letter-spacing:-.035em;max-width:18ch}
+.ab-open h1 em{font-style:normal;color:var(--yellow)}
+
+.ab-facts{position:relative;display:grid;grid-template-columns:.7fr 1.3fr 1fr;border-top:1px solid var(--hair-strong)}
+.ab-facts div{padding:22px 24px 28px 0;margin-right:24px;border-right:1px solid var(--hair)}
+.ab-facts div:last-child{border-right:0;margin-right:0}
+.ab-facts dt{font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow)}
+.ab-facts dd{margin-top:8px;font-family:var(--display);font-size:clamp(1.05rem,1.6vw,1.3rem);font-weight:600;line-height:1.25}
+
+/* ---------- founder band ---------- */
+.ab-founder{background:var(--yellow);color:var(--black)}
+.ab-founder-in{display:grid;grid-template-columns:1.25fr .75fr;gap:clamp(32px,6vw,90px);align-items:center;padding-top:clamp(56px,7vw,100px);padding-bottom:clamp(56px,7vw,100px)}
+.ab-kick{font-size:11.5px;font-weight:700;letter-spacing:.2em;border-left:3px solid var(--black);padding-left:12px}
+.ab-belief{margin-top:22px;font-family:var(--display);font-weight:600;font-size:clamp(1.9rem,4.2vw,3.4rem);line-height:1.08;letter-spacing:-.035em;max-width:none}
+.ab-founder-body{margin-top:24px;font-size:1.02rem;color:rgba(0,0,0,.76);max-width:52ch}
+.ab-name{margin-top:30px;padding-top:18px;border-top:2px solid var(--black)}
+.ab-name b{display:block;font-family:var(--display);font-size:1.2rem;font-weight:600}
+.ab-name span{font-size:13.5px;color:rgba(0,0,0,.66)}
+.ab-portrait{position:relative;margin:0}
+.ab-portrait::before{content:"";position:absolute;inset:18px -18px -18px 18px;border:3px solid var(--black)}
+.ab-portrait img{position:relative;display:block;width:100%;aspect-ratio:4/5;object-fit:cover;filter:grayscale(1) contrast(1.08);background:var(--black)}
+
+/* ---------- mission / vision ---------- */
+.ab-mv{display:grid;grid-template-columns:.55fr 1.45fr;gap:clamp(28px,5vw,80px);align-items:start}
+.ab-mv-label{border-top:5px solid var(--yellow);padding-top:18px}
+.ab-mv-label span{display:block;font-family:var(--display);font-size:clamp(2.6rem,5vw,4rem);font-weight:600;color:var(--yellow);line-height:1}
+.ab-mv-label h2{margin-top:10px;font-size:clamp(1.3rem,2vw,1.6rem)}
+.ab-mission{font-family:var(--display);font-size:clamp(1.3rem,2.4vw,1.95rem);line-height:1.3;letter-spacing:-.02em;font-weight:500;max-width:none}
+.ab-outcomes{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.ab-outcomes li{border:1.5px solid var(--yellow);color:var(--yellow);font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:9px 16px}
+.ab-vision{list-style:none;counter-reset:v;border-top:1px solid var(--hair)}
+.ab-vision li{
+  counter-increment:v;display:grid;grid-template-columns:56px 1fr;gap:16px;align-items:baseline;
+  padding:24px 0;border-bottom:1px solid var(--hair);
+  font-family:var(--display);font-size:clamp(1.15rem,2vw,1.55rem);line-height:1.32;letter-spacing:-.015em;font-weight:500;
+}
+.ab-vision li::before{content:counter(v,decimal-leading-zero);font-family:var(--body);font-size:13px;font-weight:700;letter-spacing:.14em;color:var(--yellow)}
+
+/* ---------- responsive ---------- */
+@media(max-width:1020px){
+  .ab-founder-in,.ab-mv{grid-template-columns:1fr}
+  .ab-portrait{max-width:360px}
+  .ab-facts{grid-template-columns:1fr}
+  .ab-facts div{border-right:0;margin-right:0;border-bottom:1px solid var(--hair);padding:18px 0}
+  .ab-facts div:last-child{border-bottom:0}
+}
+@media(max-width:700px){
+  .ab-open-grid{grid-template-columns:1fr;align-items:start}
+  .ab-portrait::before{inset:12px -12px -12px 12px}
+  .ab-vision li{grid-template-columns:40px 1fr}
+}

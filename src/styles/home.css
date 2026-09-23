@@ -87,6 +87,17 @@
 .spread-sign{margin-top:30px;padding-top:20px;border-top:2px solid var(--black)}
 .spread-sign b{font-family:var(--display);font-size:1.2rem;display:block;font-weight:600}
 .spread-sign span{font-size:13.5px;color:rgba(0,0,0,.66)}
+.spread-title{font-size:13px;font-family:var(--body);font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:18px}
+.spread-txt p + p{margin-top:14px}
+
+/* ---------- services video link ---------- */
+.home-video{position:relative;display:block;margin-top:clamp(28px,4vw,48px);border:2px solid var(--yellow);text-decoration:none}
+.home-video img{width:100%;height:clamp(220px,32vw,420px);object-fit:cover;filter:grayscale(1) brightness(.6)}
+.home-video span{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  background:var(--yellow);color:var(--black);font-weight:700;font-size:14px;padding:14px 24px;
+}
+.home-video:hover span{background:var(--white)}
 
 /* ---------- credential band ---------- */
 .creds{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--yellow)}

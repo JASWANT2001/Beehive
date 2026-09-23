@@ -61,7 +61,7 @@ export default function Gallery() {
         </div>
       </section>
 
-      <section className="sec sec-yellow">
+      {/* <section className="sec sec-yellow">
         <div className="wrap">
           <SecHead title="What these numbers represent" />
           <Stats />
@@ -77,7 +77,7 @@ export default function Gallery() {
           borderTop: '1px solid rgba(255,255,255,.16)',
         }}
         bodyStyle={{ color: 'var(--on-black-1)' }}
-      />
+      /> */}
     </>
   )
 }

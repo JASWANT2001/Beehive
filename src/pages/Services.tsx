@@ -1,95 +1,138 @@
 import { Link } from 'react-router-dom'
-import Banner from '../components/Banner'
 import Cta from '../components/Cta'
-import Faq from '../components/Faq'
-import Formats from '../components/Formats'
 import Meta from '../components/Meta'
-import Pillars from '../components/Pillars'
-import ProgrammeGrid from '../components/ProgrammeGrid'
-import SecHead from '../components/SecHead'
-import {
-  ENGAGEMENT,
-  FAQ,
-  INDIVIDUAL_PROGRAMMES,
-  SCHOOL_PROGRAMMES,
-} from '../data/services'
+import { GROUPS, type Course } from '../data/services'
+
+// Running number across every group: 01 … 09.
+const NUMBERED = GROUPS.flatMap((g) => g.courses).map((c, i) => [c.id, String(i + 1).padStart(2, '0')])
+const NUM = Object.fromEntries(NUMBERED) as Record<string, string>
+
+function CourseBlock({ c }: { c: Course }) {
+  return (
+    <article className="sv-course" id={c.id}>
+      <header className="sv-side">
+        <span className="sv-num">{NUM[c.id]}</span>
+        <h3>{c.name}</h3>
+        <ul className="sv-facts">
+          {c.facts.map((f) => (
+            <li key={f}>{f}</li>
+          ))}
+        </ul>
+        <Link to="/contact" className="sv-enquire">
+          Enquire about {c.name} &rarr;
+        </Link>
+      </header>
+
+      <div className="sv-main">
+        <p className="sv-tagline">{c.tagline}</p>
+        <div className="sv-paras">
+          {c.paras.map((p) => (
+            <p key={p}>{p}</p>
+          ))}
+        </div>
+
+        {c.lists?.map((l) => {
+          const detailed = l.items.some((i) => i.body)
+          return (
+            <div className="sv-list" key={l.heading}>
+              <h4>{l.heading}</h4>
+              {detailed ? (
+                <dl className="sv-points">
+                  {l.items.map((i) => (
+                    <div key={i.title}>
+                      <dt>{i.title}</dt>
+                      <dd>{i.body}</dd>
+                    </div>
+                  ))}
+                </dl>
+              ) : (
+                <ul className="sv-ticks">
+                  {l.items.map((i) => (
+                    <li key={i.title}>{i.title}</li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          )
+        })}
+
+        {c.closing ? <p className="sv-closing">{c.closing}</p> : null}
+      </div>
+    </article>
+  )
+}
 
 export default function Services() {
   return (
     <>
       <Meta
-        title="Services & Programmes — Beehive Communication Club"
-        description="Nine English communication programmes for school students, teachers, job aspirants, adults and corporate teams."
+        title="Programmes Offered — Beehive Communication Club"
+        description="Odyssey, Vista, Project Punch, Nurture, Aspirant Q, Proficient Communicator, Project Elite and corporate training from Beehive Communication Club."
       />
 
-      <Banner
-        crumb="Services"
-        title="Programmes and services"
-        intro="Nine programmes and five delivery formats. Choose by who the training is for, and we will tell you which one fits your calendar."
-      >
-        <div className="btns" style={{ marginTop: 30 }}>
-          <Link to="/services#schools" className="btn btn-solid">
-            For schools
-          </Link>
-          <Link to="/services#individuals" className="btn btn-ghost">
-            For individuals
-          </Link>
-        </div>
-      </Banner>
+      {/* OPENING + PROGRAMME FINDER */}
+      <section className="sv-open">
+        <div className="comb"></div>
+        <div className="wrap sv-open-in">
+          <div className="crumb">
+            <Link to="/">Home</Link> / Services
+          </div>
+          <span className="eyebrow">WHAT WE DO</span>
+          <h1>Programmes offered</h1>
+          <p className="sv-lead">
+            For school students, teachers, college students, adults, working professionals and
+            corporate teams. Pick a programme to jump to it.
+          </p>
 
-      {/* FORMATS */}
-      <section className="sec">
-        <div className="wrap">
-          <SecHead title="Delivery formats">
-            Every programme below is delivered through one or more of these five formats.
-          </SecHead>
-          <Formats />
+          <nav className="sv-finder" aria-label="Programmes">
+            {GROUPS.map((g) => (
+              <div key={g.id}>
+                <span className="sv-finder-k">{g.kicker}</span>
+                <ul>
+                  {g.courses.map((c) => (
+                    <li key={c.id}>
+                      <Link to={`#${c.id}`}>
+                        <span>{NUM[c.id]}</span>
+                        {c.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
         </div>
       </section>
 
-      {/* FOR SCHOOLS */}
-      <section className="sec sec-white" id="schools">
-        <div className="wrap">
-          <SecHead title="For schools and teaching faculty">
-            Programmes designed to sit inside an academic calendar, delivered on campus by trainers
-            on our own roll.
-          </SecHead>
-          <ProgrammeGrid items={SCHOOL_PROGRAMMES} />
-        </div>
-      </section>
-
-      {/* FOR INDIVIDUALS */}
-      <section className="sec" id="individuals">
-        <div className="wrap">
-          <SecHead title="For individuals and professionals">
-            Courses you can join directly, at our Virudhunagar centre or online.
-          </SecHead>
-          <ProgrammeGrid items={INDIVIDUAL_PROGRAMMES} />
-        </div>
-      </section>
-
-      {/* PROCESS */}
-      <section className="sec sec-line">
-        <div className="wrap">
-          <SecHead title="How engagement works">
-            From first conversation to closing report, this is what an institution can expect.
-          </SecHead>
-          <Pillars items={ENGAGEMENT} />
-        </div>
-      </section>
-
-      {/* FAQ */}
-      <section className="sec sec-white">
-        <div className="wrap">
-          <SecHead title="Common questions about our programmes" />
-          <Faq items={FAQ} />
-        </div>
-      </section>
+      {GROUPS.map((g) => (
+        <section key={g.id} id={g.id} className="sv-group">
+          <div className="sv-band">
+            <div className="wrap sv-band-in">
+              <div>
+                <span className="sv-band-k">{g.kicker}</span>
+                <h2>{g.title}</h2>
+              </div>
+              {g.intro ? (
+                <div className="sv-band-intro">
+                  {g.intro.map((p) => (
+                    <p key={p}>{p}</p>
+                  ))}
+                </div>
+              ) : null}
+            </div>
+          </div>
+          <div className="wrap">
+            {g.courses.map((c) => (
+              <CourseBlock key={c.id} c={c} />
+            ))}
+          </div>
+        </section>
+      ))}
 
       <Cta
         title="Not sure which programme fits?"
-        body="Tell us who the learners are and what they need to be able to do. We will recommend the right one."
-        action="Talk to our team"
+        body="Call 9750207464 or 8778593044, or write to hr@beehivecommunicationclub.com."
+        action="Contact us"
       />
     </>
   )

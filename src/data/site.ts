@@ -13,7 +13,12 @@ export const CONTACT = {
   address: ['Church Road, Sivagami Puram,', 'Virudhunagar, Tamil Nadu, India'],
 } as const
 
-export const SOCIALS = ['Fb', 'Ig', 'In', 'Yt'] as const
+export const SOCIALS = [
+  { label: 'Fb', name: 'Facebook', href: 'https://www.facebook.com/beehive.communicationclub.1' },
+  { label: 'Ig', name: 'Instagram', href: 'https://www.instagram.com/beehivecommunicationclub' },
+  { label: 'In', name: 'LinkedIn', href: 'https://www.linkedin.com/company/67147547/' },
+  { label: 'Yt', name: 'YouTube', href: 'https://www.youtube.com/@BeehiveCommunicationClub' },
+] as const
 
 export const STATS = [
   { value: '120+', label: 'Institutions partnered' },

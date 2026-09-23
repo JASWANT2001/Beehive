@@ -1,61 +1,41 @@
-import type { FaqItem } from '../components/Faq'
+import { IMG } from './site'
 
-export const ENQUIRY_TYPES = [
-  'School programme — Odyssey or Nurture',
-  'Teacher training — Vista or Project Punch',
-  'Job aspirants — Aspirant Q',
-  'Adults — Proficient Communicator',
-  'Professionals — Project Elite',
-  'Corporate sessions',
-  'Cambridge English certification',
-  'Careers at Beehive',
-  'Something else',
-] as const
+// Content from beehivecommunicationclub.com/contactus.php.
 
-export const BATCH_SIZES = [
-  'Individual learner',
-  'Under 20',
-  '20 – 50',
-  '50 – 150',
-  'More than 150',
-] as const
+export const FORM_TO = 'hr@beehivecommunicationclub.com'
 
-export const DESKS = [
+export const WAYS = [
   {
-    tag: 'INSTITUTIONS',
-    title: 'Schools and colleges',
-    body: 'Programme proposals, batch scheduling, on-campus delivery and closing reports.',
-    contact: '97502 07464',
+    kind: 'CALL',
+    lines: [
+      { text: '+91 87785 93044', href: 'tel:+918778593044' },
+      { text: '+91 97502 07464', href: 'tel:+919750207464' },
+    ],
   },
   {
-    tag: 'CORPORATE',
-    title: 'Companies and teams',
-    body: 'Customised sessions, timings around working hours, and on-site or online delivery.',
-    contact: '87785 93044',
+    kind: 'EMAIL',
+    lines: [
+      { text: 'a.shyamaraj@beehivecommunicationclub.com', href: 'mailto:a.shyamaraj@beehivecommunicationclub.com' },
+      { text: 'hr@beehivecommunicationclub.com', href: 'mailto:hr@beehivecommunicationclub.com' },
+    ],
   },
   {
-    tag: 'CAREERS',
-    title: 'Join our trainer panel',
-    body: 'We hire communication trainers across Tamil Nadu. Send your profile and a short speaking sample.',
-    contact: 'hr@beehivecommunicationclub.com',
+    kind: 'VISIT',
+    lines: [
+      { text: 'Church Road, Sivagami Puram,', href: 'https://maps.google.com/?q=Church+Road,+Sivagami+Puram,+Virudhunagar,+Tamil+Nadu' },
+      { text: 'Virudhunagar, Tamil Nadu, India', href: 'https://maps.google.com/?q=Church+Road,+Sivagami+Puram,+Virudhunagar,+Tamil+Nadu' },
+    ],
+  },
+  {
+    kind: 'WEB',
+    lines: [{ text: 'www.beehivecommunicationclub.com', href: 'https://beehivecommunicationclub.com' }],
   },
 ] as const
 
-export const FAQ: readonly FaqItem[] = [
-  {
-    q: 'How quickly will I hear back?',
-    a: 'Enquiries are answered within one working day. If you have asked for a proposal, expect the written document within two working days of the first conversation.',
-  },
-  {
-    q: 'Can we arrange a demonstration session?',
-    a: 'Yes. For institutional enquiries we can run a demonstration session with one class or one batch before you commit to a full programme.',
-  },
-  {
-    q: 'Do you work with institutions outside Tamil Nadu?',
-    a: 'We deliver on campus across Tamil Nadu, and anywhere in India or overseas over video. Travel beyond the state is arranged for larger engagements.',
-  },
-  {
-    q: 'I want to join a course as an individual. Where do I start?',
-    a: 'Select your course under enquiry type above and send the form. We will share the next batch start date, timings and fee structure.',
-  },
-]
+export const MAP_EMBED =
+  'https://www.google.com/maps?q=Church+Road,+Sivagami+Puram,+Virudhunagar,+Tamil+Nadu,+India&output=embed'
+
+export const VIDEO = {
+  href: 'https://www.youtube.com/watch?v=MdP8MuSdZhY&t=67s',
+  img: `${IMG}/images/contact980.png`,
+} as const

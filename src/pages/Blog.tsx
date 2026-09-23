@@ -75,7 +75,7 @@ export default function Blog() {
       </section>
 
       {/* NEWSLETTER */}
-      <section className="sec sec-yellow">
+      {/* <section className="sec sec-yellow">
         <div
           className="wrap"
           style={{
@@ -123,7 +123,7 @@ export default function Blog() {
             </button>
           </div>
         </div>
-      </section>
+      </section> */}
     </>
   )
 }
