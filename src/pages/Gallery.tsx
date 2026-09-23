@@ -1,9 +1,6 @@
 import { useMemo, useState } from 'react'
 import Banner from '../components/Banner'
-import Cta from '../components/Cta'
 import Meta from '../components/Meta'
-import SecHead from '../components/SecHead'
-import Stats from '../components/Stats'
 import { CATEGORIES, SHOTS, type CategoryId } from '../data/gallery'
 
 export default function Gallery() {
