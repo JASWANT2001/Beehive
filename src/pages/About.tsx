@@ -25,7 +25,7 @@ export default function About() {
             <div>
               <span className="eyebrow">ABOUT BEEHIVE</span>
               <h1>
-                A training organisation for <em>communicative English</em> and soft skills.
+                Training in <em>communicative English</em> and soft skills.
               </h1>
             </div>
           </div>
@@ -94,7 +94,7 @@ export default function About() {
 
       <Cta
         title="Work with us"
-        body="Call 9750207464 or 8778593044, or write to hr@beehivecommunicationclub.com. Church Rd, Sivagami Puram, Virudhunagar, Tamil Nadu."
+        body="Call 9750207464 / 8778593044 or email hr@beehivecommunicationclub.com."
         action="Contact us"
       />
     </>

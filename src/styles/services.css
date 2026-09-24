@@ -1,5 +1,5 @@
 /* ==========================================================
-   Services page only — programme finder + long-form programme entries.
+   Services page only — programme finder + programme cards.
    Loaded after style.css. Palette unchanged: black, yellow, white.
    ========================================================== */
 
@@ -26,52 +26,33 @@
 /* ---------- group band ---------- */
 .sv-group{scroll-margin-top:80px}
 .sv-band{background:var(--yellow);color:var(--black)}
-.sv-band-in{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,70px);align-items:end;padding-top:clamp(40px,5vw,64px);padding-bottom:clamp(36px,4.5vw,56px)}
-.sv-band-k{display:block;font-size:11.5px;font-weight:700;letter-spacing:.2em;border-left:3px solid var(--black);padding-left:12px;margin-bottom:16px}
-.sv-band h2{font-size:clamp(1.8rem,3.6vw,2.9rem);letter-spacing:-.035em;max-width:20ch}
-.sv-band-intro p{color:rgba(0,0,0,.76);font-size:15px;max-width:none}
-.sv-band-intro p + p{margin-top:12px}
+.sv-band-in{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 40px;padding-top:clamp(32px,4vw,48px);padding-bottom:clamp(28px,3.5vw,40px)}
+.sv-band-k{display:block;font-size:11.5px;font-weight:700;letter-spacing:.2em;border-left:3px solid var(--black);padding-left:12px;margin-bottom:12px}
+.sv-band h2{font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:-.035em}
+.sv-band-intro{color:rgba(0,0,0,.76);font-size:15px;max-width:40ch}
 
-/* ---------- programme entry ---------- */
-.sv-course{
-  display:grid;grid-template-columns:.62fr 1.38fr;gap:clamp(28px,5vw,80px);
-  padding:clamp(48px,6vw,84px) 0;border-bottom:1px solid var(--hair);scroll-margin-top:80px;
+/* ---------- programme cards ---------- */
+.sv-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:20px;padding-top:clamp(32px,4vw,52px);padding-bottom:clamp(40px,5vw,64px)}
+.sv-card{
+  display:flex;flex-direction:column;padding:26px 24px 24px;border:1px solid var(--hair);
+  border-top:3px solid var(--yellow);scroll-margin-top:90px;transition:border-color .2s,background .2s;
 }
-.sv-course:last-child{border-bottom:0}
-.sv-side{position:sticky;top:100px;align-self:start}
-.sv-num{display:block;font-family:var(--display);font-size:clamp(3rem,6vw,4.6rem);font-weight:700;line-height:.9;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px var(--yellow)}
-.sv-side h3{margin-top:14px;font-size:clamp(1.6rem,2.8vw,2.2rem);letter-spacing:-.03em}
-.sv-facts{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
-.sv-facts li{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--hair-strong);color:var(--on-black-1);padding:6px 11px}
+.sv-card:hover,.sv-card:target{border-color:var(--hair-strong);border-top-color:var(--yellow);background:rgba(255,255,255,.04)}
+.sv-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.sv-num{font-family:var(--display);font-size:2.4rem;font-weight:700;line-height:.9;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px var(--yellow)}
+.sv-facts{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
+.sv-facts li{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--hair-strong);color:var(--on-black-1);padding:4px 8px}
 .sv-facts li:first-child{border-color:var(--yellow);color:var(--yellow)}
-.sv-enquire{display:inline-block;margin-top:26px;font-weight:700;font-size:14px;color:var(--yellow);text-decoration:none;border-bottom:2px solid var(--yellow);padding-bottom:2px}
+.sv-card h3{margin-top:18px;font-size:1.5rem;letter-spacing:-.03em}
+.sv-summary{margin-top:8px;color:var(--on-black-1);font-size:15px}
+.sv-topics{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;margin-bottom:22px}
+.sv-topics li{font-size:12.5px;padding:5px 10px;background:rgba(255,255,255,.07)}
+.sv-enquire{margin-top:auto;align-self:flex-start;font-weight:700;font-size:14px;color:var(--yellow);text-decoration:none;border-bottom:2px solid var(--yellow);padding-bottom:2px}
 .sv-enquire:hover{color:var(--white);border-color:var(--white)}
-
-.sv-tagline{font-family:var(--display);font-size:clamp(1.35rem,2.5vw,2rem);line-height:1.22;letter-spacing:-.025em;font-weight:600;max-width:none}
-.sv-paras{margin-top:22px}
-.sv-paras p{color:var(--on-black-1);font-size:1.02rem;max-width:68ch}
-.sv-paras p + p{margin-top:14px}
-
-.sv-list{margin-top:36px}
-.sv-list h4{font-size:11.5px;font-family:var(--body);font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--yellow);margin-bottom:6px}
-.sv-points > div{display:grid;grid-template-columns:.8fr 1.2fr;gap:20px;padding:16px 0;border-bottom:1px solid var(--hair)}
-.sv-points dt{font-weight:600;font-size:15px}
-.sv-points dd{color:var(--on-black-1);font-size:14.5px}
-.sv-ticks{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:0 28px}
-.sv-ticks li{position:relative;padding:13px 0 13px 26px;border-bottom:1px solid var(--hair);font-size:15px}
-.sv-ticks li::before{content:"";position:absolute;left:0;top:19px;width:10px;height:10px;background:var(--yellow);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
-
-.sv-closing{margin-top:34px;padding:18px 22px;border-left:5px solid var(--yellow);background:rgba(255,255,255,.05);font-weight:600;max-width:none}
 
 /* ---------- responsive ---------- */
 @media(max-width:1020px){
   .sv-finder{grid-template-columns:1fr}
   .sv-finder > div{border-right:0;margin-right:0;border-bottom:1px solid var(--hair);padding-right:0}
   .sv-finder > div:last-child{border-bottom:0}
-  .sv-band-in,.sv-course{grid-template-columns:1fr}
-  .sv-side{position:static}
-}
-@media(max-width:700px){
-  .sv-points > div{grid-template-columns:1fr;gap:4px}
-  .sv-ticks{grid-template-columns:1fr}
 }

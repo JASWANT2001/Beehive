@@ -7,57 +7,27 @@ import { GROUPS, type Course } from '../data/services'
 const NUMBERED = GROUPS.flatMap((g) => g.courses).map((c, i) => [c.id, String(i + 1).padStart(2, '0')])
 const NUM = Object.fromEntries(NUMBERED) as Record<string, string>
 
-function CourseBlock({ c }: { c: Course }) {
+function CourseCard({ c }: { c: Course }) {
   return (
-    <article className="sv-course" id={c.id}>
-      <header className="sv-side">
+    <article className="sv-card" id={c.id}>
+      <div className="sv-card-top">
         <span className="sv-num">{NUM[c.id]}</span>
-        <h3>{c.name}</h3>
         <ul className="sv-facts">
           {c.facts.map((f) => (
             <li key={f}>{f}</li>
           ))}
         </ul>
-        <Link to="/contact" className="sv-enquire">
-          Enquire about {c.name} &rarr;
-        </Link>
-      </header>
-
-      <div className="sv-main">
-        <p className="sv-tagline">{c.tagline}</p>
-        <div className="sv-paras">
-          {c.paras.map((p) => (
-            <p key={p}>{p}</p>
-          ))}
-        </div>
-
-        {c.lists?.map((l) => {
-          const detailed = l.items.some((i) => i.body)
-          return (
-            <div className="sv-list" key={l.heading}>
-              <h4>{l.heading}</h4>
-              {detailed ? (
-                <dl className="sv-points">
-                  {l.items.map((i) => (
-                    <div key={i.title}>
-                      <dt>{i.title}</dt>
-                      <dd>{i.body}</dd>
-                    </div>
-                  ))}
-                </dl>
-              ) : (
-                <ul className="sv-ticks">
-                  {l.items.map((i) => (
-                    <li key={i.title}>{i.title}</li>
-                  ))}
-                </ul>
-              )}
-            </div>
-          )
-        })}
-
-        {c.closing ? <p className="sv-closing">{c.closing}</p> : null}
       </div>
+      <h3>{c.name}</h3>
+      <p className="sv-summary">{c.summary}</p>
+      <ul className="sv-topics">
+        {c.topics.map((t) => (
+          <li key={t}>{t}</li>
+        ))}
+      </ul>
+      <Link to="/contact" className="sv-enquire">
+        Enquire &rarr;
+      </Link>
     </article>
   )
 }
@@ -80,8 +50,7 @@ export default function Services() {
           <span className="eyebrow">WHAT WE DO</span>
           <h1>Programmes offered</h1>
           <p className="sv-lead">
-            For school students, teachers, college students, adults, working professionals and
-            corporate teams. Pick a programme to jump to it.
+            For students, teachers, adults and teams. Pick one to jump to it.
           </p>
 
           <nav className="sv-finder" aria-label="Programmes">
@@ -112,18 +81,12 @@ export default function Services() {
                 <span className="sv-band-k">{g.kicker}</span>
                 <h2>{g.title}</h2>
               </div>
-              {g.intro ? (
-                <div className="sv-band-intro">
-                  {g.intro.map((p) => (
-                    <p key={p}>{p}</p>
-                  ))}
-                </div>
-              ) : null}
+              {g.intro ? <p className="sv-band-intro">{g.intro}</p> : null}
             </div>
           </div>
-          <div className="wrap">
+          <div className="wrap sv-cards">
             {g.courses.map((c) => (
-              <CourseBlock key={c.id} c={c} />
+              <CourseCard key={c.id} c={c} />
             ))}
           </div>
         </section>

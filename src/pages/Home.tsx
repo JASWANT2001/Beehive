@@ -39,8 +39,7 @@ export default function Home() {
             Great messages are conveyed <span className="pause">&#8214;</span> between words.
           </h1>
           <p className="vhero-sub">
-            To take the practices of communication skills as a tasty dish to all and keep the minds
-            open for exposures in that field.
+            Making communication skills a tasty dish for all.
           </p>
           <div className="btns">
             <Link to="/contact" className="btn btn-solid">
@@ -105,7 +104,7 @@ export default function Home() {
       <section className="sec sec-line">
         <div className="wrap">
           <SecHead title="Programmes offered">
-            Programmes for school students, teachers, adults, professionals and corporate teams.
+            For students, teachers, adults and teams.
           </SecHead>
           <div className="prog">
             {PROGRAMMES.map((p) => (
@@ -234,7 +233,7 @@ export default function Home() {
       {/* GET IN TOUCH */}
       <Cta
         title="Get in touch"
-        body="Call 9750207464 or 8778593044, or write to hr@beehivecommunicationclub.com. Church Rd, Sivagami Puram, Virudhunagar, Tamil Nadu."
+        body="Call 9750207464 / 8778593044 or email hr@beehivecommunicationclub.com."
         action="Contact us"
       />
     </>
