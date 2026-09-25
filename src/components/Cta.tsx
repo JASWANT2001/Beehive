@@ -25,8 +25,9 @@ export default function Cta({
           <h2>{title}</h2>
           <p style={bodyStyle}>{body}</p>
         </div>
-        <Link to={to} className="btn btn-solid">
-          {action}
+        <Link to={to} className="cta-btn">
+          <span>{action}</span>
+          <span className="cta-btn-arrow" aria-hidden="true">&rarr;</span>
         </Link>
       </div>
     </section>

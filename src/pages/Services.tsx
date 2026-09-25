@@ -25,9 +25,16 @@ function CourseCard({ c }: { c: Course }) {
           <li key={t}>{t}</li>
         ))}
       </ul>
-      <Link to="/contact" className="sv-enquire">
-        Enquire &rarr;
-      </Link>
+      <div className="sv-links">
+        <Link to={`/services/${c.id}`} className="sv-more">
+          Know more &rarr;
+        </Link>
+        {/* Enquire button hidden — uncomment to show it again.
+        <Link to="/contact" className="sv-enquire">
+          Enquire
+        </Link>
+        */}
+      </div>
     </article>
   )
 }
@@ -40,19 +47,35 @@ export default function Services() {
         description="Odyssey, Vista, Project Punch, Nurture, Aspirant Q, Proficient Communicator, Project Elite and corporate training from Beehive Communication Club."
       />
 
-      {/* OPENING + PROGRAMME FINDER */}
+      {/* OPENING STATEMENT */}
       <section className="sv-open">
         <div className="comb"></div>
         <div className="wrap sv-open-in">
           <div className="crumb">
             <Link to="/">Home</Link> / Services
           </div>
-          <span className="eyebrow">WHAT WE DO</span>
-          <h1>Programmes offered</h1>
-          <p className="sv-lead">
-            For students, teachers, adults and teams. Pick one to jump to it.
-          </p>
+          <div className="sv-open-grid">
+            <div className="sv-count" aria-hidden="true">
+              {String(NUMBERED.length).padStart(2, '0')}
+            </div>
+            <div>
+              <span className="eyebrow">OUR PROGRAMMES</span>
+              <h1>
+                From first words to <em>confident voices.</em>
+              </h1>
+              <p className="sv-hook">
+                Year-long school programmes, 50-hour courses and corporate sessions, built for
+                students, teachers, adults and teams. Find the one that fits and we'll take it
+                from there.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
+      {/* PROGRAMME FINDER */}
+      <section className="sv-finder-sec">
+        <div className="wrap">
           <nav className="sv-finder" aria-label="Programmes">
             {GROUPS.map((g) => (
               <div key={g.id}>
@@ -81,7 +104,16 @@ export default function Services() {
                 <span className="sv-band-k">{g.kicker}</span>
                 <h2>{g.title}</h2>
               </div>
-              {g.intro ? <p className="sv-band-intro">{g.intro}</p> : null}
+              {g.intro ? (
+                <div className="sv-band-side">
+                  <p className="sv-band-intro">{g.intro}</p>
+                  {g.id === 'in-house' ? (
+                    <Link to="/services/in-house" className="sv-band-link">
+                      About our in-house courses &rarr;
+                    </Link>
+                  ) : null}
+                </div>
+              ) : null}
             </div>
           </div>
           <div className="wrap sv-cards">

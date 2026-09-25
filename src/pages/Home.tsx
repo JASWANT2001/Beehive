@@ -1,10 +1,12 @@
 import { Link } from 'react-router-dom'
 import Clients from '../components/Clients'
+import CountUp from '../components/CountUp'
 import Cta from '../components/Cta'
 import Meta from '../components/Meta'
 import SecHead from '../components/SecHead'
 import { IMG } from '../data/site'
 import {
+  AWARD,
   CREDENTIALS,
   DIRECTOR,
   EVENTS,
@@ -16,6 +18,9 @@ import {
   TESTIMONIALS,
   VIDEO,
 } from '../data/home'
+
+// Events of BCC layout: 'panels' (hover-expand strips) or 'mosaic' (photo grid).
+const EVENTS_LAYOUT: 'panels' | 'mosaic' = 'panels'
 
 export default function Home() {
   return (
@@ -85,12 +90,13 @@ export default function Home() {
       <section className="sec">
         <div className="wrap">
           <SecHead title="Our services" />
-          <div className="grid-5">
+          <div className="grid-5 grid-5-links">
             {SERVICES.map((s) => (
-              <div key={s.title}>
+              <Link key={s.title} to={s.to}>
                 <h3>{s.title}</h3>
                 <p>{s.body}</p>
-              </div>
+                <span className="more">Know more &rarr;</span>
+              </Link>
             ))}
           </div>
           <a className="home-video" href={VIDEO.href} target="_blank" rel="noopener noreferrer">
@@ -125,17 +131,34 @@ export default function Home() {
       <section className="sec sec-line">
         <div className="wrap">
           <SecHead title="Events of BCC" />
-          <div className="latest">
-            {EVENTS.map((e) => (
-              <article key={e.title}>
-                <img src={e.img} alt="" loading="lazy" />
-                <div className="pad">
-                  <div className="meta">{e.meta}</div>
-                  <h3>{e.title}</h3>
-                </div>
-              </article>
-            ))}
-          </div>
+          {EVENTS_LAYOUT === 'panels' ? (
+            <div className="ev-panels">
+              {EVENTS.map((e, i) => (
+                <Link key={e.title} to="/gallery" className="ev-panel">
+                  <img src={e.img} alt="" loading="lazy" />
+                  <span className="ev-num">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="ev-vlabel" aria-hidden="true">{e.title}</span>
+                  <div className="ev-cap">
+                    <div className="ev-meta">{e.meta}</div>
+                    <h3>{e.title}</h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="ev-mosaic">
+              {EVENTS.map((e, i) => (
+                <Link key={e.title} to="/gallery" className="ev-tile">
+                  <img src={e.img} alt="" loading="lazy" />
+                  <span className="ev-num">{String(i + 1).padStart(2, '0')}</span>
+                  <div className="ev-cap">
+                    <div className="ev-meta">{e.meta}</div>
+                    <h3>{e.title}</h3>
+                  </div>
+                </Link>
+              ))}
+            </div>
+          )}
           <div className="btns" style={{ marginTop: 34 }}>
             <Link to="/gallery" className="btn btn-ghost">
               View more
@@ -148,13 +171,28 @@ export default function Home() {
       <section className="sec sec-yellow">
         <div className="wrap">
           <SecHead title="Our success & award" />
-          <div className="stats">
-            {SUCCESS.map((s) => (
-              <div key={s.label}>
-                <b>{s.value}</b>
-                <span>{s.label}</span>
-              </div>
-            ))}
+          <div className="win">
+            <figure className="win-award">
+              <img src={AWARD.img} alt={AWARD.title} loading="lazy" />
+              <figcaption>
+                <span className="win-kicker">&#9733; {AWARD.kicker}</span>
+                <h3>{AWARD.title}</h3>
+                <span className="win-note">{AWARD.note}</span>
+                <span className="win-badge">{AWARD.badge}</span>
+              </figcaption>
+            </figure>
+            <div className="win-stats">
+              {SUCCESS.map((s, i) => (
+                <div key={s.label} className="win-stat">
+                  <span className="win-idx">{String(i + 1).padStart(2, '0')}</span>
+                  <b>
+                    <CountUp value={s.value} />
+                  </b>
+                  <span className="win-label">{s.label}</span>
+                  <span className="win-sub">{s.note}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>

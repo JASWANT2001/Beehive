@@ -4,17 +4,17 @@ export default function UtilBar() {
   return (
     <div className="util">
       <div className="wrap util-in">
-        <div>
+        <div className="util-info">
           <span>Authorised Cambridge English Training Partner</span>
           <span>Virudhunagar, Tamil Nadu</span>
         </div>
         <div>
-          <span>
+          <a href={`tel:+91${CONTACT.phones[0].replace(/\s/g, '')}`}>
             <b>Call</b> {CONTACT.phones[0]}
-          </span>
-          <span>
+          </a>
+          <a href={`mailto:${CONTACT.email}`}>
             <b>Email</b> {CONTACT.email}
-          </span>
+          </a>
         </div>
       </div>
     </div>

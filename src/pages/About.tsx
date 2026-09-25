@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import Cta from '../components/Cta'
 import Meta from '../components/Meta'
 import { ABOUT_FACTS, FOUNDER, MISSION, MISSION_OUTCOMES, VISION } from '../data/about'
 
@@ -91,12 +90,6 @@ export default function About() {
           </ol>
         </div>
       </section>
-
-      <Cta
-        title="Work with us"
-        body="Call 9750207464 / 8778593044 or email hr@beehivecommunicationclub.com."
-        action="Contact us"
-      />
     </>
   )
 }

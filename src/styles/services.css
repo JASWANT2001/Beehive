@@ -3,13 +3,21 @@
    Loaded after style.css. Palette unchanged: black, yellow, white.
    ========================================================== */
 
-/* ---------- opening + finder ---------- */
-.sv-open{position:relative;overflow:hidden;border-bottom:1px solid var(--hair)}
-.sv-open-in{position:relative;padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(48px,6vw,80px)}
-.sv-open h1{font-size:clamp(2.6rem,6.6vw,5.4rem);letter-spacing:-.045em}
-.sv-lead{margin-top:18px;color:var(--on-black-1);font-size:1.05rem;max-width:56ch}
+/* ---------- opening statement (matches About / Contact) ---------- */
+.sv-open{position:relative;overflow:hidden;border-bottom:5px solid var(--yellow)}
+.sv-open-in{position:relative;padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(40px,5vw,64px)}
+.sv-open-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);align-items:end;margin-top:clamp(28px,4vw,44px)}
+.sv-count{
+  font-family:var(--display);font-weight:700;line-height:.78;letter-spacing:-.06em;
+  font-size:clamp(6rem,17vw,15rem);color:transparent;-webkit-text-stroke:2px var(--yellow);
+}
+.sv-open h1{font-size:clamp(2rem,4.4vw,3.6rem);letter-spacing:-.035em;max-width:18ch}
+.sv-open h1 em{font-style:normal;color:var(--yellow)}
+.sv-hook{margin-top:20px;color:var(--on-black-1);font-size:clamp(1rem,1.4vw,1.12rem);max-width:58ch}
 
-.sv-finder{display:grid;grid-template-columns:1fr 1.25fr .8fr;gap:0;margin-top:clamp(36px,5vw,60px);border-top:2px solid var(--yellow)}
+/* ---------- programme finder ---------- */
+.sv-finder-sec{padding:clamp(28px,4vw,48px) 0;border-bottom:1px solid var(--hair)}
+.sv-finder{display:grid;grid-template-columns:1fr 1.25fr .8fr;gap:0;border-top:2px solid var(--yellow)}
 .sv-finder > div{padding:22px 24px 6px 0;margin-right:24px;border-right:1px solid var(--hair)}
 .sv-finder > div:last-child{border-right:0;margin-right:0}
 .sv-finder-k{display:block;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--yellow);margin-bottom:10px}
@@ -47,7 +55,12 @@
 .sv-summary{margin-top:8px;color:var(--on-black-1);font-size:15px}
 .sv-topics{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;margin-bottom:22px}
 .sv-topics li{font-size:12.5px;padding:5px 10px;background:rgba(255,255,255,.07)}
-.sv-enquire{margin-top:auto;align-self:flex-start;font-weight:700;font-size:14px;color:var(--yellow);text-decoration:none;border-bottom:2px solid var(--yellow);padding-bottom:2px}
+.sv-links{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
+.sv-more{display:inline-block;background:var(--yellow);color:var(--black);font-weight:700;font-size:14px;text-decoration:none;padding:10px 16px;border:2px solid var(--yellow);transition:background .2s ease,color .2s ease}
+.sv-more:hover{background:transparent;color:var(--yellow)}
+.sv-band-link{display:inline-block;margin-top:10px;font-weight:700;font-size:14px;color:var(--black);text-decoration:none;border-bottom:2px solid var(--black);padding-bottom:1px}
+.sv-band-link:hover{opacity:.7}
+.sv-enquire{font-weight:700;font-size:14px;color:var(--yellow);text-decoration:none;border-bottom:2px solid var(--yellow);padding-bottom:2px}
 .sv-enquire:hover{color:var(--white);border-color:var(--white)}
 
 /* ---------- responsive ---------- */
@@ -55,4 +68,26 @@
   .sv-finder{grid-template-columns:1fr}
   .sv-finder > div{border-right:0;margin-right:0;border-bottom:1px solid var(--hair);padding-right:0}
   .sv-finder > div:last-child{border-bottom:0}
+}
+@media(max-width:700px){
+  .sv-finder-sec{padding:24px 0}
+  .sv-finder > div{padding:16px 0 14px}
+  .sv-finder ul{display:flex;flex-wrap:wrap;gap:8px}
+  .sv-finder a{padding:8px 12px;border:1px solid var(--hair-strong);font-size:.95rem;gap:8px}
+  .sv-finder li:last-child a{border-bottom:1px solid var(--hair-strong)}
+  .sv-finder a:hover{border-color:var(--yellow)}
+  .sv-band-k{font-size:10.5px;letter-spacing:.16em}
+  .sv-cards{gap:14px;padding-top:24px;padding-bottom:36px}
+  .sv-card{padding:20px 18px}
+  .sv-card-top{flex-direction:column;gap:12px}
+  .sv-facts{justify-content:flex-start}
+  .sv-num{font-size:2rem}
+  .sv-card h3{margin-top:10px;font-size:1.35rem}
+}
+@media(max-width:1020px){
+  .sv-open-grid{grid-template-columns:1fr;align-items:start}
+}
+@media(max-width:700px){
+  .sv-open-in{padding-top:36px;padding-bottom:32px}
+  .sv-count{font-size:5.5rem}
 }

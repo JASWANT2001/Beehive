@@ -23,11 +23,11 @@ export const DIRECTOR = {
 } as const
 
 export const SERVICES = [
-  { title: 'One-on-one coaching', body: 'A dedicated trainer for one learner.' },
-  { title: 'Group coaching', body: 'Small batches with a live audience.' },
-  { title: 'Year-long training programmes', body: 'Full academic-year programmes in schools.' },
-  { title: 'Crash courses', body: 'Short, intensive prep for interviews and placements.' },
-  { title: 'Certification through Cambridge English Assessments', body: 'Internationally recognised certification.' },
+  { title: 'One-on-one coaching', body: 'A dedicated trainer for one learner.', to: '/services/in-house' },
+  { title: 'Group coaching', body: 'Small batches with a live audience.', to: '/services/in-house' },
+  { title: 'Year-long training programmes', body: 'Full academic-year programmes in schools.', to: '/services/odyssey' },
+  { title: 'Crash courses', body: 'Short, intensive prep for interviews and placements.', to: '/services/aspirant-q' },
+  { title: 'Certification through Cambridge English Assessments', body: 'Internationally recognised certification.', to: '/contact' },
 ] as const
 
 export const VIDEO = {
@@ -36,15 +36,15 @@ export const VIDEO = {
 } as const
 
 export const PROGRAMMES = [
-  { tag: 'SCHOOL STUDENTS', title: 'Odyssey', to: '/services#odyssey', body: 'Year-long communicative English for students.' },
-  { tag: 'FOR SCHOOLS', title: 'Vista', to: '/services#vista', body: 'Communication coaching for school faculty.' },
-  { tag: 'FREE · 3 DAYS', title: 'Project Punch', to: '/services#project-punch', body: 'Free spoken English for teachers and student teachers.' },
-  { tag: 'EVERY STAGE OF LIFE', title: 'In-house courses', to: '/services#in-house', body: 'Courses crafted for learners at every stage of life.' },
-  { tag: 'ONLINE / OFFLINE', title: 'Nurture', to: '/services#nurture', body: 'A fun, interactive English foundation course for kids.' },
-  { tag: 'ONLINE / OFFLINE', title: 'Aspirant Q', to: '/services#aspirant-q', body: 'Grammar, interview and academic English for aspirants.' },
-  { tag: 'ONLINE / OFFLINE', title: 'Proficient Communicator', to: '/services#proficient-communicator', body: 'Spoken English for adults: fluency and confidence.' },
-  { tag: 'PROFESSIONALS', title: 'Project Elite', to: '/services#project-elite', body: 'Professional English to elevate your career.' },
-  { tag: 'CORPORATE TEAMS', title: 'Corporate sessions', to: '/services#corporate', body: 'Customised training for your corporate team.' },
+  { tag: 'SCHOOL STUDENTS', title: 'Odyssey', to: '/services/odyssey', body: 'Year-long communicative English for students.' },
+  { tag: 'FOR SCHOOLS', title: 'Vista', to: '/services/vista', body: 'Communication coaching for school faculty.' },
+  { tag: 'FREE · 3 DAYS', title: 'Project Punch', to: '/services/project-punch', body: 'Free spoken English for teachers and student teachers.' },
+  { tag: 'EVERY STAGE OF LIFE', title: 'In-house courses', to: '/services/in-house', body: 'Courses crafted for learners at every stage of life.' },
+  { tag: 'ONLINE / OFFLINE', title: 'Nurture', to: '/services/nurture', body: 'A fun, interactive English foundation course for kids.' },
+  { tag: 'ONLINE / OFFLINE', title: 'Aspirant Q', to: '/services/aspirant-q', body: 'Grammar, interview and academic English for aspirants.' },
+  { tag: 'ONLINE / OFFLINE', title: 'Proficient Communicator', to: '/services/proficient-communicator', body: 'Spoken English for adults: fluency and confidence.' },
+  { tag: 'PROFESSIONALS', title: 'Project Elite', to: '/services/project-elite', body: 'Professional English to elevate your career.' },
+  { tag: 'CORPORATE TEAMS', title: 'Corporate sessions', to: '/services/corporate-sessions', body: 'Customised training for your corporate team.' },
 ] as const
 
 export const EVENTS = [
@@ -57,11 +57,19 @@ export const EVENTS = [
 ] as const
 
 export const SUCCESS = [
-  { value: '120+', label: 'Institutions' },
-  { value: '50+', label: 'Current clients' },
-  { value: '100+', label: 'Trainers' },
-  { value: '10L+', label: 'Beneficiaries reached' },
+  { value: '120+', label: 'Institutions', note: 'Schools and colleges partnered' },
+  { value: '50+', label: 'Current clients', note: 'Running programmes today' },
+  { value: '100+', label: 'Trainers', note: 'Across our network' },
+  { value: '10L+', label: 'Beneficiaries reached', note: 'Learners, teachers and teams' },
 ] as const
+
+export const AWARD = {
+  img: `${IMG}/images/g3.png`,
+  kicker: 'WORLD RECORD',
+  title: 'India Book of Records',
+  note: '31 January 2025 · Virudhunagar',
+  badge: 'Official training partner of Cambridge English',
+} as const
 
 export const GALLERY = [
   { img: `${IMG}/images/g1.png`, title: 'Buzz 11.0', caption: 'Virudhunagar' },
