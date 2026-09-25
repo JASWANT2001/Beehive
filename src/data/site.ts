@@ -3,7 +3,7 @@ export const NAV_LINKS = [
   { to: '/about', label: 'About' },
   { to: '/services', label: 'Services' },
   { to: '/gallery', label: 'Gallery' },
-  { to: '/blog', label: 'Blog' },
+  // { to: '/blog', label: 'Blog' }, // hidden from the nav bar — uncomment to show it again
   { to: '/contact', label: 'Contact' },
 ] as const
 

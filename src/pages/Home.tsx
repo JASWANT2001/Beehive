@@ -200,22 +200,25 @@ export default function Home() {
       {/* PHOTO GALLERY */}
       <section className="sec">
         <div className="wrap">
-          <SecHead title="Photo gallery" />
-          <div className="gal">
-            {GALLERY.map((g) => (
-              <figure key={g.title}>
-                <img src={g.img} alt={g.title} loading="lazy" />
-                <figcaption>
-                  <b>{g.title}</b>
-                  <span>{g.caption}</span>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-          <div className="btns" style={{ marginTop: 34 }}>
-            <Link to="/gallery" className="btn btn-ghost">
-              View gallery
+          <div className="hgal-head">
+            <div>
+              <span className="hgal-kick">OUR MOMENTS</span>
+              <h2>Photo gallery</h2>
+            </div>
+            <Link to="/gallery" className="hgal-all">
+              View full gallery &rarr;
             </Link>
+          </div>
+          <div className="hgal">
+            {GALLERY.map((g) => (
+              <Link key={g.title} to="/gallery" className="hgal-item">
+                <div className="hgal-img">
+                  <img src={g.img} alt={g.title} loading="lazy" />
+                </div>
+                <b>{g.title}</b>
+                <span>{g.caption}</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
