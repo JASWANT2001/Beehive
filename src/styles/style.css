@@ -21,8 +21,12 @@
   --display:"Bricolage Grotesque",Georgia,serif;
   --body:"Instrument Sans",system-ui,-apple-system,sans-serif;
 
-  --maxw:100%;
+  --maxw:1408px;
   --gut:clamp(20px,5vw,60px);
+
+  /* every page opens on a hero of this height (Home's full-screen hero aside) */
+  --hero-h:clamp(340px,44vh,470px);
+  --hero-pad:clamp(26px,3.4vw,44px);
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -91,7 +95,13 @@ p{max-width:68ch}
 }
 
 /* ---------------- page banner (inner pages) ---------------- */
-.banner{position:relative;overflow:hidden;padding:clamp(56px,7vw,96px) 0 clamp(48px,6vw,74px);border-bottom:1px solid var(--hair)}
+/* Shared hero height. The same three lines appear on each page's own
+   opening block: .ab-open-in, .ct-open-in, .sv-open-in and .sd-hero. */
+.banner{
+  position:relative;overflow:hidden;border-bottom:1px solid var(--hair);
+  min-height:var(--hero-h);padding-block:var(--hero-pad);
+  display:flex;flex-direction:column;justify-content:center;
+}
 .banner-in{position:relative}
 .crumb{font-size:13px;color:var(--on-black-2);margin-bottom:18px}
 .crumb a{text-decoration:none;color:var(--yellow)}
@@ -107,6 +117,10 @@ p{max-width:68ch}
 
 .sec-head{max-width:62ch;margin-bottom:clamp(34px,4.5vw,58px)}
 .sec-head p{margin-top:16px;color:var(--on-black-1)}
+.sec-head-split{
+  max-width:none;display:flex;justify-content:space-between;align-items:flex-end;gap:20px 40px;flex-wrap:wrap;
+}
+.sec-head-split > div:first-child{max-width:62ch}
 .sec-white .sec-head p{color:var(--on-white-1)}
 .sec-yellow .sec-head p{color:rgba(0,0,0,.76)}
 .rule{width:54px;height:5px;background:var(--yellow);margin-bottom:20px}
@@ -269,20 +283,29 @@ blockquote.pull span{color:var(--yellow)}
 .clients img{max-height:60px;width:auto;object-fit:contain;filter:grayscale(1);opacity:.75}
 .clients div:hover img{opacity:1}
 
-/* ---------------- blog ---------------- */
+/* ---------------- blog: full articles, read in place ---------------- */
 .feature{display:grid;grid-template-columns:1.05fr .95fr;gap:0;border:2px solid var(--yellow)}
 .feature img{width:100%;height:100%;min-height:320px;object-fit:cover;background:var(--yellow)}
 .feature .pad{padding:clamp(26px,4vw,44px);display:flex;flex-direction:column;justify-content:center}
 .meta{font-size:12.5px;color:var(--yellow);font-weight:600;margin-bottom:14px}
 .feature h2{font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:14px}
-.feature p{color:var(--on-black-1);font-size:15px}
-.posts{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--yellow);margin-top:2px}
-.posts article{background:var(--black);padding:0 0 28px;display:flex;flex-direction:column}
-.posts img{width:100%;height:190px;object-fit:cover;background:var(--yellow)}
-.posts .pad{padding:24px 24px 0;display:flex;flex-direction:column;flex:1}
-.posts h3{margin-bottom:10px}
-.posts p{font-size:14.2px;color:var(--on-black-1);flex:1;max-width:none}
-.posts .more{margin-top:18px;font-size:13.5px;font-weight:700;color:var(--yellow);text-decoration:none;border-bottom:2px solid var(--yellow);align-self:flex-start;padding-bottom:2px}
+.feature p{color:var(--on-black-1);font-size:15px;max-width:60ch}
+.feature p + p{margin-top:14px}
+
+/* single-column list — each entry is the whole article, not a teaser card */
+.posts{display:grid;gap:0}
+.posts article{
+  display:grid;grid-template-columns:.6fr 1.4fr;gap:clamp(24px,4vw,48px);
+  padding:clamp(32px,4.5vw,52px) 0;border-bottom:1px solid var(--hair);
+  scroll-margin-top:90px;
+}
+.posts article:first-child{padding-top:0}
+.posts article:last-child{border-bottom:0}
+.posts img{width:100%;height:100%;min-height:200px;object-fit:cover;background:var(--yellow);filter:grayscale(1) contrast(1.05)}
+.posts .pad{display:flex;flex-direction:column;justify-content:center}
+.posts h3{font-size:clamp(1.25rem,2vw,1.7rem);margin-bottom:14px;letter-spacing:-.02em}
+.posts p{font-size:15px;color:var(--on-black-1);max-width:62ch;line-height:1.62}
+.posts p + p{margin-top:12px}
 
 /* ---------------- FAQ ---------------- */
 .faq{border-top:1px solid var(--hair)}
@@ -330,26 +353,41 @@ blockquote.pull span{color:var(--yellow)}
 .offices p{font-size:14.3px;color:var(--on-black-1);max-width:none}
 .offices .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.11em;color:var(--yellow);border:1.5px solid var(--yellow);padding:3px 9px;margin-bottom:14px}
 
-/* ---------------- CTA band ---------------- */
-.cta{background:var(--yellow);color:var(--black);padding:clamp(48px,6vw,80px) 0}
-.cta-in{display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap}
-.cta h2{max-width:18ch}
-.cta p{margin-top:14px;color:rgba(0,0,0,.76);max-width:46ch}
+/* ---------------- closing CTA ---------------- */
+/* A contained card, not a full-bleed band: one line of intent on the
+   left, one action on the right. */
+.cta{padding:clamp(40px,5.5vw,84px) 0}
+.cta-card{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:clamp(20px,3.5vw,48px);flex-wrap:wrap;
+  background:rgba(255,255,255,.045);
+  border:1px solid var(--hair);border-radius:18px;
+  padding:clamp(26px,3.4vw,46px) clamp(24px,3.4vw,50px);
+}
+.cta-say{min-width:0}
+.cta h2{font-size:clamp(1.45rem,2.7vw,2.25rem);letter-spacing:-.03em;line-height:1.12;max-width:22ch}
+.cta p{margin-top:10px;color:var(--on-black-1);font-size:1rem;line-height:1.55;max-width:52ch}
+
 .cta-btn{
-  display:inline-flex;align-items:center;gap:14px;text-decoration:none;
-  background:var(--black);color:var(--yellow);font-weight:700;font-size:15.5px;letter-spacing:.02em;
-  padding:18px 20px 18px 30px;border:2px solid var(--black);border-radius:999px;
-  box-shadow:0 10px 24px -12px rgba(0,0,0,.55);
-  transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease;
+  flex:none;display:inline-flex;align-items:center;gap:10px;
+  background:var(--yellow);color:var(--black);border:2px solid var(--yellow);
+  font-weight:700;font-size:15px;padding:15px 26px;border-radius:10px;
+  text-decoration:none;transition:background .2s ease,color .2s ease;
 }
-.cta-btn-arrow{
-  display:grid;place-items:center;width:34px;height:34px;border-radius:50%;
-  background:var(--yellow);color:var(--black);font-size:17px;line-height:1;transition:transform .2s ease;
-}
-.cta-btn:hover{transform:translateY(-2px);box-shadow:0 16px 30px -12px rgba(0,0,0,.6)}
+.cta-btn-arrow{transition:transform .25s ease}
+.cta-btn:hover{background:transparent;color:var(--yellow)}
 .cta-btn:hover .cta-btn-arrow{transform:translateX(4px)}
-.cta-btn:focus-visible{outline:3px solid var(--black);outline-offset:4px}
-.cta-btn:active{transform:translateY(0)}
+.cta-btn:focus-visible{outline:3px solid var(--yellow);outline-offset:4px}
+
+@media(max-width:700px){
+  .cta-card{align-items:flex-start;gap:22px}
+  .cta h2{max-width:none}
+  .cta-btn{width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  .cta-btn,.cta-btn-arrow{transition:none}
+  .cta-btn:hover .cta-btn-arrow{transform:none}
+}
 
 /* ---------------- footer ---------------- */
 .foot{border-top:5px solid var(--yellow);padding:clamp(50px,6vw,74px) 0 0}
@@ -372,9 +410,9 @@ blockquote.pull span{color:var(--yellow)}
   .grid-5{grid-template-columns:repeat(2,1fr)}
   .grid-5 > div{border-bottom:2px solid var(--yellow)}
   .grid-5 > div:nth-child(2n){border-right:0}
-  .prog,.pillars,.accred,.gal,.tst,.posts,.offices{grid-template-columns:repeat(2,1fr)}
+  .prog,.pillars,.accred,.gal,.tst,.offices{grid-template-columns:repeat(2,1fr)}
   .people{grid-template-columns:repeat(2,1fr)}
-  .split,.split-rev,.contact,.feature{grid-template-columns:1fr}
+  .split,.split-rev,.contact,.feature,.posts article{grid-template-columns:1fr}
   .hexphoto img{max-width:340px;margin:0 auto}
   .clients{grid-template-columns:repeat(3,1fr)}
   .clients div{border-bottom:2px solid var(--black)}
@@ -398,7 +436,8 @@ blockquote.pull span{color:var(--yellow)}
   .stats{grid-template-columns:repeat(2,1fr)}
   .stats div{border-bottom:1px solid var(--hair)}
   .stats div:nth-child(2n){border-right:0}
-  .prog,.pillars,.accred,.gal,.tst,.posts,.offices,.grid-5,.people,.foot-grid{grid-template-columns:1fr}
+  .prog,.pillars,.accred,.gal,.tst,.offices,.grid-5,.people,.foot-grid{grid-template-columns:1fr}
+  .posts img{min-height:170px}
   .grid-5 > div{border-right:0}
   .clients{grid-template-columns:repeat(3,1fr);gap:8px;border:0;background:none}
   .clients div,.clients div:last-child{padding:12px;min-height:78px;border:2px solid var(--black);background:var(--white)}

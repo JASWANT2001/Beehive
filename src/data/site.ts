@@ -1,10 +1,11 @@
 export const NAV_LINKS = [
   { to: '/', label: 'Home' },
-  { to: '/about', label: 'About' },
+  { to: '/founders', label: 'Founders' },
   { to: '/services', label: 'Services' },
   { to: '/gallery', label: 'Gallery' },
-  // { to: '/blog', label: 'Blog' }, // hidden from the nav bar — uncomment to show it again
-  { to: '/contact', label: 'Contact' },
+  { to: '/buzz', label: 'Buzz' },
+  { to: '/success-stories', label: 'Success Stories' },
+  { to: '/contact', label: 'Contact Us' },
 ] as const
 
 export const CONTACT = {

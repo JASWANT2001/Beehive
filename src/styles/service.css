@@ -1,0 +1,111 @@
+/* ==========================================================
+   Service detail pages (/services/<id>).
+   Short, but with presence: the service's number from the list
+   page returns as a ghost numeral, the honeycomb sits behind it,
+   and the facts run as a full-width spec strip.
+   ========================================================== */
+
+/* ---------- header ---------- */
+.sd-hero{
+  position:relative;overflow:hidden;
+  border-bottom:1px solid var(--hair);
+  min-height:var(--hero-h);padding-block:var(--hero-pad);
+  display:flex;flex-direction:column;justify-content:center;
+}
+.sd-hero-in{position:relative;z-index:1;max-width:62%}
+
+/* the numeral the visitor clicked on the list page, returning large */
+.sd-ghost{
+  position:absolute;right:clamp(10px,3vw,60px);top:50%;transform:translateY(-44%);
+  font-family:var(--display);font-weight:700;line-height:.72;letter-spacing:-.06em;
+  font-size:clamp(11rem,24vw,20rem);color:transparent;
+  -webkit-text-stroke:2px rgba(255,197,0,.2);
+  pointer-events:none;user-select:none;z-index:0;
+}
+
+.sd-kick{
+  display:flex;align-items:center;gap:12px;
+  font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--yellow);margin-bottom:18px;
+}
+.sd-kick i{
+  font-style:normal;font-family:var(--display);font-size:13px;letter-spacing:.04em;
+  border:1px solid rgba(255,197,0,.45);border-radius:999px;padding:3px 9px;
+}
+.sd-hero h1{font-size:clamp(2rem,4.4vw,3.2rem);letter-spacing:-.035em;line-height:1.04}
+.sd-lead{
+  margin-top:16px;color:var(--on-black-1);max-width:46ch;
+  font-size:clamp(1rem,1.3vw,1.14rem);line-height:1.5;
+}
+
+/* ---------- spec strip ---------- */
+.sd-spec-sec{padding:clamp(22px,2.8vw,34px) 0 0}
+.sd-spec{display:grid;grid-template-columns:repeat(4,1fr);border-top:2px solid var(--yellow)}
+.sd-spec > div{padding:17px 22px 17px 0;margin-right:22px;border-right:1px solid var(--hair)}
+.sd-spec > div:last-child{border-right:0;margin-right:0;padding-right:0}
+.sd-spec dt{
+  font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--on-black-2);
+}
+.sd-spec dd{margin-top:8px;font-size:15px;font-weight:600;line-height:1.35}
+
+/* ---------- body ---------- */
+.sd-body-sec{padding:clamp(34px,4.4vw,60px) 0 clamp(30px,4vw,52px)}
+.sd-body{
+  display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);
+  gap:clamp(28px,5vw,76px);align-items:start;
+}
+.sd-summary{
+  font-family:var(--display);font-weight:500;color:var(--white);
+  font-size:clamp(1.22rem,2.1vw,1.72rem);line-height:1.36;letter-spacing:-.02em;max-width:24ch;
+}
+.sd-points{list-style:none;border-top:1px solid var(--hair)}
+.sd-points li{
+  display:flex;align-items:baseline;gap:16px;
+  padding:15px 0;border-bottom:1px solid var(--hair);
+}
+.sd-points i{
+  font-style:normal;font-family:var(--display);font-size:12.5px;font-weight:700;
+  letter-spacing:.06em;color:var(--yellow);flex:none;
+}
+.sd-points span{font-size:15px;line-height:1.5;color:var(--on-black-1)}
+
+/* ---------- foot ---------- */
+.sd-foot-sec{padding-bottom:clamp(52px,7vw,96px)}
+.sd-foot{
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px 36px;
+  padding-top:clamp(26px,3.4vw,40px);border-top:2px solid var(--yellow);
+}
+.sd-foot-q{
+  font-family:var(--display);font-size:clamp(1.1rem,1.7vw,1.35rem);
+  font-weight:600;letter-spacing:-.02em;margin-bottom:16px;
+}
+.sd-next{text-decoration:none;color:var(--on-black-1);text-align:right;transition:color .2s ease}
+.sd-next span{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--on-black-2);
+}
+.sd-next b{display:block;margin-top:7px;font-family:var(--display);font-size:1.15rem;font-weight:600;letter-spacing:-.02em}
+.sd-next i{font-style:normal;color:var(--yellow);display:inline-block;transition:transform .25s ease}
+.sd-next:hover{color:var(--yellow)}
+.sd-next:hover i{transform:translateX(5px)}
+
+/* ---------- responsive ---------- */
+@media(max-width:1020px){
+  .sd-hero-in{max-width:none}
+  .sd-ghost{display:none}
+  .sd-spec{grid-template-columns:repeat(2,1fr)}
+  .sd-spec > div:nth-child(2n){border-right:0;margin-right:0;padding-right:0}
+  .sd-spec > div:nth-child(-n+2){border-bottom:1px solid var(--hair)}
+  .sd-body{grid-template-columns:1fr;gap:26px}
+  .sd-summary{max-width:none}
+}
+@media(max-width:700px){
+  .sd-spec{grid-template-columns:1fr}
+  .sd-spec > div{border-right:0;margin-right:0;padding:14px 0;border-bottom:1px solid var(--hair)}
+  .sd-spec > div:last-child{border-bottom:0}
+  .sd-foot{flex-direction:column;align-items:flex-start;gap:26px}
+  .sd-next{text-align:left}
+}
+@media(prefers-reduced-motion:reduce){
+  .sd-next,.sd-next i{transition:none}
+  .sd-next:hover i{transform:none}
+}

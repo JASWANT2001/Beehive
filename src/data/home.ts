@@ -23,29 +23,17 @@ export const DIRECTOR = {
 } as const
 
 export const SERVICES = [
-  { title: 'One-on-one coaching', body: 'A dedicated trainer for one learner.', to: '/services/in-house' },
-  { title: 'Group coaching', body: 'Small batches with a live audience.', to: '/services/in-house' },
-  { title: 'Year-long training programmes', body: 'Full academic-year programmes in schools.', to: '/services/odyssey' },
-  { title: 'Crash courses', body: 'Short, intensive prep for interviews and placements.', to: '/services/aspirant-q' },
-  { title: 'Certification through Cambridge English Assessments', body: 'Internationally recognised certification.', to: '/contact' },
+  { title: 'One-on-one coaching', body: 'A dedicated trainer for one learner.', to: '/services/one-on-one' },
+  { title: 'Group coaching', body: 'Small batches with a live audience.', to: '/services/group-coaching' },
+  { title: 'Year-long training programmes', body: 'Full academic-year programmes in schools.', to: '/services/year-long' },
+  { title: 'Crash courses', body: 'Short, intensive prep for interviews and placements.', to: '/services/crash-courses' },
+  { title: 'Cambridge English certification', body: 'Internationally recognised certification.', to: '/services/certification' },
 ] as const
 
 export const VIDEO = {
   href: 'https://www.youtube.com/watch?v=MdP8MuSdZhY&t=67s',
   img: `${IMG}/images/about-2.png`,
 } as const
-
-export const PROGRAMMES = [
-  { tag: 'SCHOOL STUDENTS', title: 'Odyssey', to: '/services/odyssey', body: 'Year-long communicative English for students.' },
-  { tag: 'FOR SCHOOLS', title: 'Vista', to: '/services/vista', body: 'Communication coaching for school faculty.' },
-  { tag: 'FREE · 3 DAYS', title: 'Project Punch', to: '/services/project-punch', body: 'Free spoken English for teachers and student teachers.' },
-  { tag: 'EVERY STAGE OF LIFE', title: 'In-house courses', to: '/services/in-house', body: 'Courses crafted for learners at every stage of life.' },
-  { tag: 'ONLINE / OFFLINE', title: 'Nurture', to: '/services/nurture', body: 'A fun, interactive English foundation course for kids.' },
-  { tag: 'ONLINE / OFFLINE', title: 'Aspirant Q', to: '/services/aspirant-q', body: 'Grammar, interview and academic English for aspirants.' },
-  { tag: 'ONLINE / OFFLINE', title: 'Proficient Communicator', to: '/services/proficient-communicator', body: 'Spoken English for adults: fluency and confidence.' },
-  { tag: 'PROFESSIONALS', title: 'Project Elite', to: '/services/project-elite', body: 'Professional English to elevate your career.' },
-  { tag: 'CORPORATE TEAMS', title: 'Corporate sessions', to: '/services/corporate-sessions', body: 'Customised training for your corporate team.' },
-] as const
 
 export const EVENTS = [
   { img: `${IMG}/images/Corp-event5.jpg`, meta: '31 JAN 2025 · VIRUDHUNAGAR', title: 'India Book of Record' },
@@ -71,10 +59,13 @@ export const AWARD = {
   badge: 'Official training partner of Cambridge English',
 } as const
 
+// Five curated frames for the home page mosaic. The first is the feature tile.
 export const GALLERY = [
-  { img: `${IMG}/images/g1.png`, title: 'Buzz 11.0', caption: 'Virudhunagar' },
-  { img: `${IMG}/images/g2.png`, title: 'N Care', caption: 'Dr. Rela Institute and Medical Centre, Chennai' },
-  { img: `${IMG}/images/g3.png`, title: 'World Record Holder', caption: 'India Book of Records' },
+  { img: `${IMG}/images/g1.png`, tag: 'Events', title: 'Buzz 11.0', caption: 'Annual literary conference · Virudhunagar' },
+  { img: `${IMG}/images/g3.png`, tag: 'Records', title: 'World record holders', caption: 'India Book of Records · 2025' },
+  { img: `${IMG}/images/g2.png`, tag: 'Corporate', title: 'N Care', caption: 'Dr. Rela Institute · Chennai' },
+  { img: `${IMG}/image/bccbanner3.jpeg`, tag: 'Sessions', title: 'Train the Trainers', caption: 'Faculty development cohort' },
+  { img: `${IMG}/image/bccbanner5.jpeg`, tag: 'Sessions', title: 'Spotlight', caption: 'Learner showcase' },
 ] as const
 
 export const CREDENTIALS = [
@@ -103,7 +94,7 @@ export const TESTIMONIALS = [
     body: 'The story writing activity was a good learning experience. The entire package including interview preparation, spot the error and impromptu speech was very helpful.',
   },
   {
-    img: `${IMG}/images/testimonials_man1.png`,
+    img: `${IMG}/images/testimonials_man2.png`,
     name: 'Mr. Riyaz',
     place: 'Dubai',
     body: "I have gotten the most valuable time and wonderful support from you & Mr. Manickavasagam. He has given 100% effort for all classes, and he never fails to encourage me. I'm so grateful to the Beehive Team.",
@@ -113,5 +104,17 @@ export const TESTIMONIALS = [
     name: 'Ms. Deepalakshmi',
     place: '50-hour course',
     body: 'My trainer, Sowmiya ma’am, taught with great patience and trained me personally on the HR interview process. Thanks to her training, I performed well in my interview and was selected.',
+  },
+  {
+    img: `${IMG}/images/testimonials_woman1.png`,
+    name: 'Mrs. Kalpana',
+    place: 'Parent, Virudhunagar',
+    body: 'My daughter went from refusing to speak in class to representing her school at Buzz. I did not expect a year-long programme to change her this much — it changed how she carries herself, not just how she speaks.',
+  },
+  {
+    img: `${IMG}/images/testimonials_woman2.png`,
+    name: 'Priya S.',
+    place: 'Odyssey, Class XI',
+    body: 'I used to write my speech and read it out. Now I can stand up with just a topic and speak for two minutes without panicking. The impromptu speech sessions did that.',
   },
 ] as const

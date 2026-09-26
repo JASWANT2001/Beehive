@@ -11,10 +11,12 @@ export default function Nav() {
   useEffect(() => setOpen(false), [pathname])
 
   const isActive = useCallback(
-    (to: string) =>
-      to === '/'
+    (to: string) => {
+      const path = to.split('#')[0] || '/'
+      return path === '/'
         ? pathname === '/' || pathname === '/home-option-a'
-        : pathname === to || pathname.startsWith(`${to}/`),
+        : pathname === path || pathname.startsWith(`${path}/`)
+    },
     [pathname],
   )
 

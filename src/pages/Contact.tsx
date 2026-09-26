@@ -24,21 +24,31 @@ export default function Contact() {
             How can we <em>help?</em>
           </h1>
         </div>
+      </section>
 
+      {/* WAYS TO REACH US */}
+      <section className="ct-ways-sec">
         <div className="wrap">
           <div className="ct-ways">
-            {WAYS.map((w) => (
+            {WAYS.map((w, i) => (
               <div key={w.kind} className="ct-way">
+                <span className="ct-way-n" aria-hidden="true">
+                  {String(i + 1).padStart(2, '0')}
+                </span>
                 <span className="ct-way-k">{w.kind}</span>
-                {w.lines.map((l) => (
-                  <a
-                    key={l.text}
-                    href={l.href}
-                    {...(l.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                  >
-                    {l.text}
-                  </a>
-                ))}
+                <div className="ct-way-lines">
+                  {w.lines.map((l) => (
+                    <a
+                      key={l.text}
+                      href={l.href}
+                      {...(l.href.startsWith('http')
+                        ? { target: '_blank', rel: 'noopener noreferrer' }
+                        : {})}
+                    >
+                      {l.text}
+                    </a>
+                  ))}
+                </div>
               </div>
             ))}
           </div>

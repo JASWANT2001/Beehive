@@ -29,7 +29,10 @@ export default function About() {
             </div>
           </div>
         </div>
+      </section>
 
+      {/* AT A GLANCE */}
+      <section className="ab-facts-sec">
         <dl className="wrap ab-facts">
           {ABOUT_FACTS.map((f) => (
             <div key={f.label}>

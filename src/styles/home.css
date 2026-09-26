@@ -5,13 +5,16 @@
 
 /* ---------- full-bleed hero with photograph ---------- */
 .vhero{
-  position:relative;min-height:min(84vh,760px);display:flex;flex-direction:column;justify-content:flex-end;
+  position:relative;min-height:100vh;min-height:100svh;display:flex;flex-direction:column;
   overflow:hidden;border-bottom:5px solid var(--yellow);
 }
 .vhero-bg{position:absolute;inset:0}
 .vhero-bg img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.12) brightness(.5)}
 .vhero-veil{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.96) 0%,rgba(0,0,0,.72) 45%,rgba(0,0,0,.55) 100%)}
-.vhero-in{position:relative;width:100%;padding-top:clamp(80px,12vw,150px);padding-bottom:clamp(30px,4vw,46px)}
+.vhero-in{
+  position:relative;width:100%;flex:1;display:flex;flex-direction:column;justify-content:center;
+  padding-top:clamp(80px,12vw,150px);padding-bottom:clamp(30px,4vw,46px);
+}
 .eyebrow{
   display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:.2em;
   color:var(--yellow);border-left:3px solid var(--yellow);padding-left:12px;margin-bottom:26px;
@@ -211,8 +214,12 @@
 .win-label{margin-top:10px;font-size:15px;font-weight:700}
 .win-sub{margin-top:4px;font-size:13px;color:var(--on-black-2)}
 
-/* ---------- photo gallery: portrait cards ---------- */
-.hgal-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px 40px;flex-wrap:wrap;margin-bottom:clamp(32px,4vw,56px)}
+/* ----------------------------------------------------------
+   photo gallery: editorial mosaic.
+   The one section on the page where photographs run in full
+   colour — everything else is grayscale, so the moments pop.
+   ---------------------------------------------------------- */
+.hgal-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px 40px;flex-wrap:wrap;margin-bottom:clamp(28px,3.4vw,46px)}
 .hgal-kick{display:block;font-size:13px;font-weight:700;letter-spacing:.24em;color:var(--yellow);margin-bottom:14px}
 .hgal-head h2{font-size:clamp(2rem,4.4vw,3.4rem);letter-spacing:-.04em}
 .hgal-all{
@@ -221,14 +228,72 @@
   transition:color .2s ease,border-color .2s ease;
 }
 .hgal-all:hover{color:var(--yellow);border-color:var(--yellow)}
-.hgal{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,32px)}
-.hgal-item{display:block;text-decoration:none;color:var(--white)}
-.hgal-img{overflow:hidden;border-radius:10px;background:var(--yellow)}
-.hgal-img img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .5s ease}
-.hgal-item:hover .hgal-img img{transform:scale(1.04)}
-.hgal-item b{display:block;margin-top:22px;font-family:var(--display);font-size:clamp(1.2rem,1.8vw,1.5rem);font-weight:600;letter-spacing:-.02em}
-.hgal-item:hover b{color:var(--yellow)}
-.hgal-item span{display:block;margin-top:8px;font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--on-black-2);line-height:1.5}
+
+/* feature frame on the left, a 2x2 cluster on the right */
+.hgal{
+  display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:clamp(150px,15.5vw,215px);
+  gap:clamp(10px,1.1vw,16px);
+}
+.hgal-item:nth-child(1){grid-column:1/3;grid-row:1/3}
+.hgal-item:nth-child(2){grid-column:3/4;grid-row:1/2}
+.hgal-item:nth-child(3){grid-column:4/5;grid-row:1/2}
+.hgal-item:nth-child(4){grid-column:3/4;grid-row:2/3}
+.hgal-item:nth-child(5){grid-column:4/5;grid-row:2/3}
+
+.hgal-item{
+  position:relative;display:block;overflow:hidden;border-radius:12px;background:#111;
+  text-decoration:none;color:var(--white);isolation:isolate;
+}
+.hgal-item img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  filter:saturate(1.06) contrast(1.04);
+  transition:transform .7s cubic-bezier(.2,.7,.3,1);
+}
+/* legibility scrim */
+.hgal-item::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.42) 36%,rgba(0,0,0,.04) 64%);
+  transition:opacity .4s ease;
+}
+/* yellow frame drawn on hover */
+.hgal-item::before{
+  content:"";position:absolute;inset:0;z-index:3;pointer-events:none;border-radius:12px;
+  border:2px solid transparent;transition:border-color .3s ease;
+}
+
+.hgal-tag{
+  position:absolute;top:13px;left:13px;z-index:3;
+  font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--black);background:var(--yellow);padding:5px 9px;border-radius:999px;
+}
+.hgal-idx{
+  position:absolute;top:13px;right:13px;z-index:3;
+  font-size:10.5px;font-weight:700;letter-spacing:.1em;color:var(--white);
+  padding:4px 8px;border-radius:999px;background:rgba(0,0,0,.45);
+  backdrop-filter:blur(3px);
+}
+.hgal-cap{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  padding:clamp(13px,1.4vw,20px);border-left:4px solid var(--yellow);
+}
+.hgal-item b{
+  display:block;font-family:var(--display);font-size:clamp(1rem,1.4vw,1.2rem);
+  font-weight:600;letter-spacing:-.02em;line-height:1.16;transition:color .25s ease;
+}
+.hgal-cap span{
+  display:block;margin-top:5px;font-size:11px;font-weight:600;letter-spacing:.11em;
+  text-transform:uppercase;color:var(--on-black-1);line-height:1.45;
+}
+/* the feature frame carries larger type */
+.hgal-item:nth-child(1) b{font-size:clamp(1.35rem,2.3vw,2rem)}
+.hgal-item:nth-child(1) .hgal-cap{padding:clamp(18px,2vw,28px)}
+.hgal-item:nth-child(1) .hgal-cap span{font-size:12px;margin-top:8px}
+
+.hgal-item:hover img,.hgal-item:focus-visible img{transform:scale(1.07)}
+.hgal-item:hover::after,.hgal-item:focus-visible::after{opacity:.88}
+.hgal-item:hover::before,.hgal-item:focus-visible::before{border-color:var(--yellow)}
+.hgal-item:hover b,.hgal-item:focus-visible b{color:var(--yellow)}
+.hgal-item:focus-visible{outline:3px solid var(--yellow);outline-offset:3px}
 
 /* ---------- responsive ---------- */
 @media(max-width:1020px){
@@ -304,13 +369,88 @@
 @media(prefers-reduced-motion:reduce){
   .win-award img,.win-stat,.win-stat::before{transition:none}
 }
+/* tablet: feature runs full width, the other four sit in a 2x2 below it */
 @media(max-width:1020px){
-  .hgal{grid-template-columns:repeat(2,1fr)}
+  .hgal{grid-template-columns:repeat(2,1fr);grid-auto-rows:clamp(150px,22vw,200px)}
+  .hgal-item:nth-child(n){grid-column:auto;grid-row:auto}
+  .hgal-item:nth-child(1){grid-column:1/3;grid-row:span 2}
 }
 @media(max-width:700px){
-  .hgal{grid-template-columns:1fr}
-  .hgal-item b{margin-top:16px}
+  .hgal{grid-template-columns:1fr;grid-auto-rows:auto}
+  .hgal-item{aspect-ratio:4/3}
+  .hgal-item:nth-child(1){grid-column:auto;grid-row:auto;aspect-ratio:5/4}
+  .hgal-item:nth-child(1) b{font-size:1.5rem}
 }
 @media(prefers-reduced-motion:reduce){
-  .hgal-img img{transition:none}
+  .hgal-item img,.hgal-item::after,.hgal-item::before,.hgal-item b{transition:none}
+  .hgal-item:hover img,.hgal-item:focus-visible img{transform:none}
+}
+
+/* ----------------------------------------------------------
+   testimonials: a continuous right-to-left marquee.
+   The track holds two copies of the list, so translating it by
+   -50% lands exactly on the start of the second copy. Card
+   spacing is margin-right, not gap — a flex gap would leave half
+   a gap unaccounted for at the seam and make the loop jump.
+   (.tst in style.css is still used by Option A and Success Stories.)
+   ---------------------------------------------------------- */
+.tmq{
+  --tmq-card:clamp(260px,26vw,360px);
+  --tmq-gap:clamp(14px,1.6vw,22px);
+  position:relative;overflow:hidden;
+  padding:4px 0;
+  /* fade the cards out at both edges */
+  -webkit-mask-image:linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%);
+  mask-image:linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%);
+}
+.tmq-track{
+  display:flex;width:max-content;
+  animation:tmq-scroll 46s linear infinite;
+}
+@keyframes tmq-scroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+.tmq:hover .tmq-track,.tmq:focus-within .tmq-track{animation-play-state:paused}
+
+.tmq-card{
+  flex:none;width:var(--tmq-card);margin-right:var(--tmq-gap);
+  display:flex;flex-direction:column;
+  padding:clamp(22px,2.4vw,30px);
+  border:1px solid var(--hair);border-top:3px solid var(--yellow);
+  background:rgba(255,255,255,.02);
+  transition:border-color .25s ease,background .25s ease;
+}
+.tmq:hover .tmq-card{border-color:var(--hair)}
+.tmq-card:hover{border-color:var(--hair-strong);background:rgba(255,255,255,.05)}
+
+.tmq-mark{
+  display:block;font-family:var(--display);font-weight:700;
+  font-size:2.6rem;line-height:.6;color:var(--yellow);margin-bottom:16px;
+}
+.tmq-card p{
+  flex:1;font-size:14.5px;line-height:1.62;color:var(--on-black-1);max-width:none;
+}
+.tmq-who{
+  display:flex;align-items:center;gap:12px;
+  margin-top:22px;padding-top:16px;border-top:1px solid var(--hair);
+}
+.tmq-who img{
+  width:44px;height:44px;flex:none;border-radius:50%;object-fit:cover;
+  background:var(--yellow);filter:grayscale(1);
+}
+.tmq-who b{display:block;font-size:14.5px;font-weight:600}
+.tmq-who span{
+  display:block;margin-top:2px;font-size:11.5px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--yellow);
+}
+
+@media(max-width:700px){
+  .tmq{--tmq-card:78vw}
+  .tmq-track{animation-duration:34s}
+}
+/* no animation: let people scroll the row themselves */
+@media(prefers-reduced-motion:reduce){
+  .tmq{overflow-x:auto;-webkit-mask-image:none;mask-image:none}
+  .tmq-track{animation:none;width:auto}
 }

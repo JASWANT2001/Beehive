@@ -6,7 +6,8 @@ import './styles/style.css'
 import './styles/home.css'
 import './styles/about.css'
 import './styles/services.css'
-import './styles/programme.css'
+import './styles/service.css'
+import './styles/successStories.css'
 import './styles/contact.css'
 
 createRoot(document.getElementById('root')!).render(

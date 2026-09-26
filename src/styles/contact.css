@@ -3,17 +3,47 @@
    Loaded after style.css. Palette unchanged: black, yellow, white.
    ========================================================== */
 
-/* ---------- opening + ways to reach us ---------- */
-.ct-open{position:relative;overflow:hidden;padding-bottom:clamp(48px,6vw,80px);border-bottom:1px solid var(--hair)}
-.ct-open-in{position:relative;padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(36px,5vw,56px)}
+/* ---------- opening ---------- */
+/* Hero only — same height as every other page's hero (--hero-h).
+   Ways to reach us is its own section below, so it never adds to
+   this section's height. */
+.ct-open{position:relative;overflow:hidden}
+.ct-open-in{
+  position:relative;min-height:var(--hero-h);padding-block:var(--hero-pad);
+  display:flex;flex-direction:column;justify-content:center;
+}
 .ct-open h1{font-size:clamp(2.8rem,8vw,6.4rem);letter-spacing:-.05em;line-height:.95}
 .ct-open h1 em{font-style:normal;color:var(--yellow)}
 
-.ct-ways{position:relative;display:grid;grid-template-columns:.9fr 1.35fr 1.05fr 1fr;border:2px solid var(--yellow)}
-.ct-way{padding:24px 24px 26px;border-right:2px solid var(--yellow);display:flex;flex-direction:column;gap:6px;min-width:0}
-.ct-way:last-child{border-right:0}
-.ct-way-k{display:block;font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--yellow);margin-bottom:8px}
-.ct-way a{text-decoration:none;font-family:var(--display);font-weight:600;font-size:clamp(.98rem,1.3vw,1.12rem);line-height:1.3;overflow-wrap:anywhere}
+/* ---------- ways to reach us ---------- */
+/* Four balanced cards rather than one outlined box split into
+   uneven columns — the values are the point, so they get the size. */
+.ct-ways-sec{padding-bottom:clamp(48px,6vw,80px);border-bottom:1px solid var(--hair)}
+.ct-ways{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,18px)}
+.ct-way{
+  position:relative;display:flex;flex-direction:column;min-width:0;
+  padding:clamp(22px,2.4vw,30px);
+  border:1px solid var(--hair);border-top:3px solid var(--yellow);
+  background:rgba(255,255,255,.028);
+  transition:background .25s ease,transform .25s ease,border-color .25s ease;
+}
+.ct-way:hover{background:rgba(255,255,255,.06);transform:translateY(-4px)}
+.ct-way-n{
+  position:absolute;top:clamp(18px,2vw,24px);right:clamp(18px,2vw,24px);
+  font-family:var(--display);font-size:12px;font-weight:700;letter-spacing:.08em;
+  color:var(--on-black-2);
+}
+.ct-way-k{
+  display:block;font-size:10.5px;font-weight:700;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--on-black-2);margin-bottom:clamp(16px,1.8vw,22px);
+}
+.ct-way-lines{display:flex;flex-direction:column;gap:9px;margin-top:auto}
+.ct-way a{
+  display:block;text-decoration:none;overflow-wrap:anywhere;
+  font-family:var(--display);font-weight:600;letter-spacing:-.015em;
+  font-size:clamp(.95rem,1.12vw,1.06rem);line-height:1.38;
+  transition:color .2s ease;
+}
 .ct-way a:hover{color:var(--yellow)}
 
 /* ---------- form + aside ---------- */
@@ -49,14 +79,14 @@
 
 /* ---------- responsive ---------- */
 @media(max-width:1020px){
-  .ct-ways{grid-template-columns:1fr 1fr}
-  .ct-way:nth-child(2n){border-right:0}
-  .ct-way:nth-child(-n+2){border-bottom:2px solid var(--yellow)}
+  .ct-ways{grid-template-columns:repeat(2,1fr)}
   .ct-touch{grid-template-columns:1fr}
 }
 @media(max-width:700px){
   .ct-ways{grid-template-columns:1fr}
-  .ct-way{border-right:0;border-bottom:2px solid var(--yellow)}
-  .ct-way:last-child{border-bottom:0}
   .ct-form-row{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+  .ct-way{transition:none}
+  .ct-way:hover{transform:none}
 }

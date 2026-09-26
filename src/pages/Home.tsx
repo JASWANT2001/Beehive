@@ -1,21 +1,16 @@
 import { Link } from 'react-router-dom'
-import Clients from '../components/Clients'
 import CountUp from '../components/CountUp'
-import Cta from '../components/Cta'
 import Meta from '../components/Meta'
 import SecHead from '../components/SecHead'
+import Testimonials from '../components/Testimonials'
 import { IMG } from '../data/site'
 import {
   AWARD,
-  CREDENTIALS,
   DIRECTOR,
   EVENTS,
   GALLERY,
-  PROGRAMMES,
-  RIBBON,
   SERVICES,
   SUCCESS,
-  TESTIMONIALS,
   VIDEO,
 } from '../data/home'
 
@@ -50,20 +45,9 @@ export default function Home() {
             <Link to="/contact" className="btn btn-solid">
               Work with us
             </Link>
-            <Link to="/about" className="btn btn-ghost">
+            <Link to="/founders" className="btn btn-ghost">
               About us
             </Link>
-          </div>
-        </div>
-
-        <div className="ribbon">
-          <div className="wrap ribbon-in">
-            {RIBBON.map((r) => (
-              <div key={r.title}>
-                <b>{r.title}</b>
-                <span>{r.note}</span>
-              </div>
-            ))}
           </div>
         </div>
       </section>
@@ -89,7 +73,7 @@ export default function Home() {
       {/* OUR SERVICES */}
       <section className="sec">
         <div className="wrap">
-          <SecHead title="Our services" />
+          <SecHead title="Our services" action={{ to: '/services', label: 'View all services →' }} />
           <div className="grid-5 grid-5-links">
             {SERVICES.map((s) => (
               <Link key={s.title} to={s.to}>
@@ -106,31 +90,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* PROGRAMMES OFFERED */}
-      <section className="sec sec-line">
-        <div className="wrap">
-          <SecHead title="Programmes offered">
-            For students, teachers, adults and teams.
-          </SecHead>
-          <div className="prog">
-            {PROGRAMMES.map((p) => (
-              <article key={p.title}>
-                <span className="tag">{p.tag}</span>
-                <h3>{p.title}</h3>
-                <p>{p.body}</p>
-                <Link to={p.to} className="more">
-                  Read more
-                </Link>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* EVENTS OF BCC */}
       <section className="sec sec-line">
         <div className="wrap">
-          <SecHead title="Events of BCC" />
+          <SecHead title="Events of BCC" action={{ to: '/gallery', label: 'View all events →' }} />
           {EVENTS_LAYOUT === 'panels' ? (
             <div className="ev-panels">
               {EVENTS.map((e, i) => (
@@ -159,16 +122,11 @@ export default function Home() {
               ))}
             </div>
           )}
-          <div className="btns" style={{ marginTop: 34 }}>
-            <Link to="/gallery" className="btn btn-ghost">
-              View more
-            </Link>
-          </div>
         </div>
       </section>
 
       {/* OUR SUCCESS & AWARD */}
-      <section className="sec sec-yellow">
+      <section id="success" className="sec sec-yellow">
         <div className="wrap">
           <SecHead title="Our success & award" />
           <div className="win">
@@ -210,42 +168,18 @@ export default function Home() {
             </Link>
           </div>
           <div className="hgal">
-            {GALLERY.map((g) => (
+            {GALLERY.map((g, i) => (
               <Link key={g.title} to="/gallery" className="hgal-item">
-                <div className="hgal-img">
-                  <img src={g.img} alt={g.title} loading="lazy" />
+                <img src={g.img} alt={g.title} loading="lazy" />
+                <span className="hgal-tag">{g.tag}</span>
+                <span className="hgal-idx">{String(i + 1).padStart(2, '0')}</span>
+                <div className="hgal-cap">
+                  <b>{g.title}</b>
+                  <span>{g.caption}</span>
                 </div>
-                <b>{g.title}</b>
-                <span>{g.caption}</span>
               </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* OUR EVENTS AND INITIATIVES */}
-      <section className="sec sec-line">
-        <div className="wrap">
-          <SecHead title="Our events and initiatives" />
-          <div className="creds">
-            {CREDENTIALS.map((c) => (
-              <article key={c.title}>
-                <img src={c.img} alt="" loading="lazy" />
-                <div>
-                  <h3>{c.title}</h3>
-                  <p>{c.body}</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* OUR CLIENTS */}
-      <section className="sec sec-white">
-        <div className="wrap">
-          <SecHead title="Our clients" />
-          <Clients />
         </div>
       </section>
 
@@ -253,30 +187,9 @@ export default function Home() {
       <section className="sec">
         <div className="wrap">
           <SecHead title="Our testimonials" />
-          <div className="tst">
-            {TESTIMONIALS.map((t) => (
-              <article key={t.name}>
-                <div className="qm">&ldquo;</div>
-                <p>{t.body}</p>
-                <div className="who">
-                  <img src={t.img} alt="" loading="lazy" />
-                  <div>
-                    <b>{t.name}</b>
-                    <span>{t.place}</span>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
         </div>
+        <Testimonials />
       </section>
-
-      {/* GET IN TOUCH */}
-      <Cta
-        title="Get in touch"
-        body="Call 9750207464 / 8778593044 or email hr@beehivecommunicationclub.com."
-        action="Contact us"
-      />
     </>
   )
 }

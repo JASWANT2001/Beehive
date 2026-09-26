@@ -2,7 +2,6 @@ import { Outlet } from 'react-router-dom'
 import Footer from './Footer'
 import Nav from './Nav'
 // import ProposalBar from './ProposalBar'
-import UtilBar from './UtilBar'
 
 // Proposal banner is hidden. To show it again, uncomment this block, the import above,
 // the two lines at the top of Layout(), `useLocation` in the router import, and <ProposalBar /> below.
@@ -30,7 +29,6 @@ export default function Layout() {
   return (
     <>
       {/* <ProposalBar {...proposal} /> */}
-      <UtilBar />
       <Nav />
       <main>
         <Outlet />

@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import Clients from '../components/Clients'
-import Cta from '../components/Cta'
 import Formats from '../components/Formats'
 import Meta from '../components/Meta'
 import SecHead from '../components/SecHead'
@@ -124,7 +123,7 @@ export default function HomeOptionA() {
               <span>Founder &amp; Director</span>
             </div>
             <div className="btns" style={{ marginTop: 26 }}>
-              <Link to="/about" className="btn btn-ghost">
+              <Link to="/founders" className="btn btn-ghost">
                 More about us
               </Link>
             </div>
@@ -199,11 +198,6 @@ export default function HomeOptionA() {
           <Clients />
         </div>
       </section>
-
-      <Cta
-        title="Bring Beehive to your institution"
-        body="Tell us the batch size, the year group and your calendar. We will send a written proposal within two working days."
-      />
     </>
   )
 }

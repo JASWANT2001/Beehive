@@ -4,8 +4,14 @@
    ========================================================== */
 
 /* ---------- opening statement ---------- */
-.ab-open{position:relative;overflow:hidden;border-bottom:5px solid var(--yellow)}
-.ab-open-in{position:relative;padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(40px,5vw,64px)}
+/* Hero only — same height as every other page's hero (--hero-h).
+   The facts strip below is its own section, so it never adds to
+   this section's height. */
+.ab-open{position:relative;overflow:hidden}
+.ab-open-in{
+  position:relative;min-height:var(--hero-h);padding-block:var(--hero-pad);
+  display:flex;flex-direction:column;justify-content:center;
+}
 .ab-open-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);align-items:end;margin-top:clamp(28px,4vw,44px)}
 .ab-year{
   font-family:var(--display);font-weight:700;line-height:.78;letter-spacing:-.06em;
@@ -15,6 +21,8 @@
 .ab-open h1{font-size:clamp(2rem,4.4vw,3.6rem);letter-spacing:-.035em;max-width:18ch}
 .ab-open h1 em{font-style:normal;color:var(--yellow)}
 
+/* facts strip — its own section, right after the hero */
+.ab-facts-sec{border-bottom:5px solid var(--yellow)}
 .ab-facts{position:relative;display:grid;grid-template-columns:.7fr 1.3fr 1fr;border-top:1px solid var(--hair-strong)}
 .ab-facts div{padding:22px 24px 28px 0;margin-right:24px;border-right:1px solid var(--hair)}
 .ab-facts div:last-child{border-right:0;margin-right:0}

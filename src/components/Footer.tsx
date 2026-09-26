@@ -4,10 +4,11 @@ import Socials from './Socials'
 import { CONTACT } from '../data/site'
 
 const EXPLORE = [
-  { to: '/about', label: 'About us' },
+  { to: '/founders', label: 'About us' },
   { to: '/services', label: 'Services' },
   { to: '/gallery', label: 'Gallery' },
-  { to: '/blog', label: 'Blog' },
+  { to: '/buzz', label: 'Blog' },
+  { to: '/success-stories', label: 'Success stories' },
   { to: '/contact', label: 'Contact' },
 ]
 

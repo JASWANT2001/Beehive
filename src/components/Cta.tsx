@@ -3,13 +3,14 @@ import { Link } from 'react-router-dom'
 
 type CtaProps = {
   title: string
-  body: ReactNode
+  body?: ReactNode
   action?: string
   to?: string
   style?: CSSProperties
   bodyStyle?: CSSProperties
 }
 
+/** Closing card: one line of intent, one action. Nothing else. */
 export default function Cta({
   title,
   body,
@@ -20,15 +21,19 @@ export default function Cta({
 }: CtaProps) {
   return (
     <section className="cta" style={style}>
-      <div className="wrap cta-in">
-        <div>
-          <h2>{title}</h2>
-          <p style={bodyStyle}>{body}</p>
+      <div className="wrap">
+        <div className="cta-card">
+          <div className="cta-say">
+            <h2>{title}</h2>
+            {body ? <p style={bodyStyle}>{body}</p> : null}
+          </div>
+          <Link to={to} className="cta-btn">
+            {action}
+            <span className="cta-btn-arrow" aria-hidden="true">
+              &rarr;
+            </span>
+          </Link>
         </div>
-        <Link to={to} className="cta-btn">
-          <span>{action}</span>
-          <span className="cta-btn-arrow" aria-hidden="true">&rarr;</span>
-        </Link>
       </div>
     </section>
   )

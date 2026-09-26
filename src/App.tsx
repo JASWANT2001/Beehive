@@ -7,9 +7,10 @@ import Home from './pages/Home'
 // Home ships in the initial bundle; every other route is fetched on demand.
 const About = lazy(() => import('./pages/About'))
 const Services = lazy(() => import('./pages/Services'))
-const Programme = lazy(() => import('./pages/Programme'))
+const Service = lazy(() => import('./pages/Service'))
 const Gallery = lazy(() => import('./pages/Gallery'))
 const Blog = lazy(() => import('./pages/Blog'))
+const SuccessStories = lazy(() => import('./pages/SuccessStories'))
 const Contact = lazy(() => import('./pages/Contact'))
 const HomeOptionA = lazy(() => import('./pages/HomeOptionA'))
 const NotFound = lazy(() => import('./pages/NotFound'))
@@ -22,11 +23,12 @@ export default function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<Home />} />
-            <Route path="about" element={<About />} />
+            <Route path="founders" element={<About />} />
             <Route path="services" element={<Services />} />
-            <Route path="services/:slug" element={<Programme />} />
+            <Route path="services/:slug" element={<Service />} />
             <Route path="gallery" element={<Gallery />} />
-            <Route path="blog" element={<Blog />} />
+            <Route path="buzz" element={<Blog />} />
+            <Route path="success-stories" element={<SuccessStories />} />
             <Route path="contact" element={<Contact />} />
             <Route path="home-option-a" element={<HomeOptionA />} />
             <Route path="*" element={<NotFound />} />

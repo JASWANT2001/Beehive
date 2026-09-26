@@ -1,11 +1,14 @@
 /* ==========================================================
-   Services page only — programme finder + programme cards.
-   Loaded after style.css. Palette unchanged: black, yellow, white.
+   Services page only — the five services, listed short.
+   Each line opens that service's page (see service.css).
    ========================================================== */
 
 /* ---------- opening statement (matches About / Contact) ---------- */
 .sv-open{position:relative;overflow:hidden;border-bottom:5px solid var(--yellow)}
-.sv-open-in{position:relative;padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(40px,5vw,64px)}
+.sv-open-in{
+  position:relative;min-height:var(--hero-h);padding-block:var(--hero-pad);
+  display:flex;flex-direction:column;justify-content:center;
+}
 .sv-open-grid{display:grid;grid-template-columns:auto 1fr;gap:clamp(24px,5vw,72px);align-items:end;margin-top:clamp(28px,4vw,44px)}
 .sv-count{
   font-family:var(--display);font-weight:700;line-height:.78;letter-spacing:-.06em;
@@ -15,79 +18,49 @@
 .sv-open h1 em{font-style:normal;color:var(--yellow)}
 .sv-hook{margin-top:20px;color:var(--on-black-1);font-size:clamp(1rem,1.4vw,1.12rem);max-width:58ch}
 
-/* ---------- programme finder ---------- */
-.sv-finder-sec{padding:clamp(28px,4vw,48px) 0;border-bottom:1px solid var(--hair)}
-.sv-finder{display:grid;grid-template-columns:1fr 1.25fr .8fr;gap:0;border-top:2px solid var(--yellow)}
-.sv-finder > div{padding:22px 24px 6px 0;margin-right:24px;border-right:1px solid var(--hair)}
-.sv-finder > div:last-child{border-right:0;margin-right:0}
-.sv-finder-k{display:block;font-size:11px;font-weight:700;letter-spacing:.18em;color:var(--yellow);margin-bottom:10px}
-.sv-finder ul{list-style:none}
-.sv-finder a{
-  display:flex;align-items:baseline;gap:14px;padding:10px 0;border-bottom:1px solid var(--hair);
-  text-decoration:none;font-family:var(--display);font-size:1.15rem;font-weight:600;
-}
-.sv-finder li:last-child a{border-bottom:0}
-.sv-finder a span{font-family:var(--body);font-size:12px;font-weight:700;color:var(--on-black-2);letter-spacing:.08em}
-.sv-finder a:hover{color:var(--yellow)}
-.sv-finder a:hover span{color:var(--yellow)}
+/* ---------- the five services, one line each ---------- */
+.sv-list{list-style:none}
+.sv-list li{border-top:1px solid var(--hair)}
+.sv-list li:last-child{border-bottom:1px solid var(--hair)}
 
-/* ---------- group band ---------- */
-.sv-group{scroll-margin-top:80px}
-.sv-band{background:var(--yellow);color:var(--black)}
-.sv-band-in{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:12px 40px;padding-top:clamp(32px,4vw,48px);padding-bottom:clamp(28px,3.5vw,40px)}
-.sv-band-k{display:block;font-size:11.5px;font-weight:700;letter-spacing:.2em;border-left:3px solid var(--black);padding-left:12px;margin-bottom:12px}
-.sv-band h2{font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:-.035em}
-.sv-band-intro{color:rgba(0,0,0,.76);font-size:15px;max-width:40ch}
-
-/* ---------- programme cards ---------- */
-.sv-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:20px;padding-top:clamp(32px,4vw,52px);padding-bottom:clamp(40px,5vw,64px)}
-.sv-card{
-  display:flex;flex-direction:column;padding:26px 24px 24px;border:1px solid var(--hair);
-  border-top:3px solid var(--yellow);scroll-margin-top:90px;transition:border-color .2s,background .2s;
+.sv-line{
+  display:grid;grid-template-columns:auto 1fr auto;align-items:center;
+  gap:clamp(18px,3vw,44px);padding:clamp(24px,3.2vw,40px) 0;
+  text-decoration:none;color:var(--white);
 }
-.sv-card:hover,.sv-card:target{border-color:var(--hair-strong);border-top-color:var(--yellow);background:rgba(255,255,255,.04)}
-.sv-card-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.sv-num{font-family:var(--display);font-size:2.4rem;font-weight:700;line-height:.9;letter-spacing:-.05em;color:transparent;-webkit-text-stroke:1.5px var(--yellow)}
-.sv-facts{list-style:none;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:6px}
-.sv-facts li{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border:1.5px solid var(--hair-strong);color:var(--on-black-1);padding:4px 8px}
-.sv-facts li:first-child{border-color:var(--yellow);color:var(--yellow)}
-.sv-card h3{margin-top:18px;font-size:1.5rem;letter-spacing:-.03em}
-.sv-summary{margin-top:8px;color:var(--on-black-1);font-size:15px}
-.sv-topics{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin-top:18px;margin-bottom:22px}
-.sv-topics li{font-size:12.5px;padding:5px 10px;background:rgba(255,255,255,.07)}
-.sv-links{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;gap:10px 18px}
-.sv-more{display:inline-block;background:var(--yellow);color:var(--black);font-weight:700;font-size:14px;text-decoration:none;padding:10px 16px;border:2px solid var(--yellow);transition:background .2s ease,color .2s ease}
-.sv-more:hover{background:transparent;color:var(--yellow)}
-.sv-band-link{display:inline-block;margin-top:10px;font-weight:700;font-size:14px;color:var(--black);text-decoration:none;border-bottom:2px solid var(--black);padding-bottom:1px}
-.sv-band-link:hover{opacity:.7}
-.sv-enquire{font-weight:700;font-size:14px;color:var(--yellow);text-decoration:none;border-bottom:2px solid var(--yellow);padding-bottom:2px}
-.sv-enquire:hover{color:var(--white);border-color:var(--white)}
+.sv-line-n{
+  font-family:var(--display);font-weight:700;line-height:.8;letter-spacing:-.05em;
+  font-size:clamp(2.2rem,4.4vw,3.6rem);color:transparent;
+  -webkit-text-stroke:2px var(--yellow);transition:color .3s ease;
+}
+.sv-line-txt{display:block;min-width:0}
+.sv-line b{
+  display:block;font-family:var(--display);font-size:clamp(1.3rem,2.6vw,2.1rem);
+  font-weight:600;letter-spacing:-.03em;line-height:1.1;transition:color .2s ease;
+}
+.sv-line-lead{
+  display:block;margin-top:9px;color:var(--on-black-1);
+  font-size:clamp(.95rem,1.2vw,1.05rem);max-width:54ch;
+}
+.sv-line-go{font-size:1.5rem;color:var(--yellow);transition:transform .3s ease}
+
+.sv-line:hover b,.sv-line:focus-visible b{color:var(--yellow)}
+.sv-line:hover .sv-line-n,.sv-line:focus-visible .sv-line-n{color:var(--yellow)}
+.sv-line:hover .sv-line-go,.sv-line:focus-visible .sv-line-go{transform:translateX(8px)}
+.sv-line:focus-visible{outline:3px solid var(--yellow);outline-offset:4px}
 
 /* ---------- responsive ---------- */
-@media(max-width:1020px){
-  .sv-finder{grid-template-columns:1fr}
-  .sv-finder > div{border-right:0;margin-right:0;border-bottom:1px solid var(--hair);padding-right:0}
-  .sv-finder > div:last-child{border-bottom:0}
-}
-@media(max-width:700px){
-  .sv-finder-sec{padding:24px 0}
-  .sv-finder > div{padding:16px 0 14px}
-  .sv-finder ul{display:flex;flex-wrap:wrap;gap:8px}
-  .sv-finder a{padding:8px 12px;border:1px solid var(--hair-strong);font-size:.95rem;gap:8px}
-  .sv-finder li:last-child a{border-bottom:1px solid var(--hair-strong)}
-  .sv-finder a:hover{border-color:var(--yellow)}
-  .sv-band-k{font-size:10.5px;letter-spacing:.16em}
-  .sv-cards{gap:14px;padding-top:24px;padding-bottom:36px}
-  .sv-card{padding:20px 18px}
-  .sv-card-top{flex-direction:column;gap:12px}
-  .sv-facts{justify-content:flex-start}
-  .sv-num{font-size:2rem}
-  .sv-card h3{margin-top:10px;font-size:1.35rem}
-}
 @media(max-width:1020px){
   .sv-open-grid{grid-template-columns:1fr;align-items:start}
 }
 @media(max-width:700px){
-  .sv-open-in{padding-top:36px;padding-bottom:32px}
   .sv-count{font-size:5.5rem}
+  .sv-line{grid-template-columns:auto 1fr;gap:14px 16px;padding:22px 0}
+  .sv-line-n{font-size:2rem}
+  .sv-line-go{display:none}
+  .sv-line-lead{margin-top:6px;font-size:.95rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .sv-line-n,.sv-line b,.sv-line-go{transition:none}
+  .sv-line:hover .sv-line-go{transform:none}
 }
